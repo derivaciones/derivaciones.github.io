@@ -1,0 +1,367 @@
+.input-container {
+  padding-right: 60px;
+}
+
+@media only screen and (min-width: 640px) and (max-width: 960px) {
+  .output-mode .input-container {
+    padding-right: 4px;
+  }
+}
+.menu-container {
+  position: absolute;
+  top: 0;
+  right: 4px;
+}
+.menu-container .menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.menu-container .menu .menu-button-text,
+.menu-container .menu .menu-button-icon,
+.menu-container .menu .menu-button {
+  border: none;
+  color: #00897B;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.5s;
+  position: relative;
+  width: 50px;
+  border: 2px solid #00897B;
+  background-color: transparent;
+  margin-bottom: 4px;
+  float: right;
+  clear: right;
+}
+.menu-container .menu .menu-button-icon {
+  font-size: 12px;
+  padding: 6px 5px 2px 5px;
+}
+.menu-container .menu .menu-button-icon .fa {
+  position: relative;
+  top: -2px;
+}
+.menu-container .menu .menu-button-text {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 6px 5px 8px 5px;
+}
+.menu-container .menu .menu-button {
+  font-weight: bold;
+  font-size: 16px;
+  padding: 7px 5px;
+}
+
+@media only screen and (min-width: 640px) and (max-width: 960px) {
+  .output-mode .menu-container {
+    right: 0;
+  }
+  .output-mode .menu-container .menu .menu-button-text,
+  .output-mode .menu-container .menu .menu-button-icon,
+  .output-mode .menu-container .menu .menu-button {
+    width: 0px;
+    padding-left: 0;
+    padding-right: 0;
+    border: none;
+  }
+}
+.output-container #output {
+  background-color: transparent;
+  color: #000000;
+  border: 1px solid #BBBBBB;
+  font-family: monospace;
+  padding: 5px;
+  box-sizing: border-box;
+  padding-right: 0px;
+}
+
+.root {
+  padding: 0px;
+  margin: 0px;
+  size: 16px;
+  line-height: 16px;
+  display: inline-flex;
+}
+.root .lines {
+  float: left;
+  display: inline-block;
+}
+.root .first-level {
+  float: left;
+  clear: left;
+}
+.root .index-container {
+  float: left;
+  display: inline-block;
+}
+.root .index-container .index {
+  min-width: 10px;
+  text-align: right;
+  color: #0AA;
+  margin-right: 5px;
+  display: block;
+  float: left;
+  clear: left;
+}
+.root .index-container .index.supposed {
+  margin-top: 24px;
+}
+.root .index-container .index.supposed-end {
+  margin-top: 24px;
+}
+.root .index-container.index-container-2 .index {
+  min-width: 15px;
+}
+.root .premise,
+.root .supposed,
+.root .assertion,
+.root .iteration-close {
+  margin-top: 8px;
+}
+.root .premise > *,
+.root .supposed > *,
+.root .assertion > *,
+.root .iteration-close > * {
+  float: left;
+}
+.root .state-error,
+.root .state-not-ok {
+  float: left;
+  width: 13px;
+  height: 13px;
+  display: block;
+  margin-top: 1px;
+  margin-left: 5px;
+}
+.root .assertion {
+  float: left;
+  clear: left;
+}
+.root .premise, .root .supposed {
+  float: left;
+  clear: left;
+}
+.root .element {
+  color: #606;
+}
+.root .negation {
+  display: inline;
+  color: #066;
+}
+.root .negation .negation-content {
+  margin-right: 2px;
+}
+.root .premise-text {
+  margin-left: 5px;
+  color: #066;
+}
+.root .supposed-text {
+  margin-left: 5px;
+  color: #066;
+}
+.root .iteration {
+  box-sizing: border-box;
+  border: 1px solid #0BB;
+  padding-left: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-top: 5px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  float: left;
+  clear: left;
+}
+.root .errors {
+  margin-right: 10px;
+  margin-top: 10px;
+  float: left;
+  clear: left;
+}
+.root .error {
+  width: 100%;
+  color: #F00;
+  background: rgba(255, 123, 123, 0.3);
+}
+.root .error .error-text {
+  margin: 0;
+}
+.root .rule {
+  display: inline;
+  margin-left: 5px;
+}
+.root .iteration-close {
+  clear: left;
+  display: inline-block;
+  float: left;
+}
+.root .binary {
+  display: inline;
+}
+.root .close-exp {
+  display: inline;
+}
+.root .connector {
+  margin: auto 5px;
+  color: #066;
+}
+.root .rule-type {
+  color: #066;
+}
+.root .rule-connector {
+  color: #080;
+}
+.root .parenthesis {
+  color: #066;
+}
+.root .parenthesis.start {
+  margin-right: 2px;
+}
+.root .parenthesis.end {
+  margin-left: 2px;
+}
+
+body {
+  margin: 0px;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+header {
+  float: left;
+  width: 100%;
+  height: 110px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+main {
+  float: left;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  box-sizing: border-box;
+  padding-top: 114px;
+  padding-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.input-container,
+.output-container {
+  float: left;
+  position: relative;
+  transition: all 0.5s;
+  box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
+}
+
+.input-container {
+  width: 60%;
+}
+
+.output-container {
+  width: 40%;
+}
+
+.output-mode .input-container {
+  width: 40%;
+}
+.output-mode .output-container {
+  width: 60%;
+}
+
+#input,
+#output {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+@media only screen and (min-width: 640px) and (max-height: 500px) {
+  body {
+    height: auto;
+    overflow: auto;
+  }
+
+  header {
+    position: relative;
+  }
+
+  main {
+    height: auto;
+    overflow: auto;
+    position: relative;
+    box-sizing: border-box;
+    padding-top: 4px;
+  }
+
+  .input-container {
+    height: 500px;
+  }
+
+  .output-container {
+    height: 500px;
+  }
+}
+@media only screen and (min-width: 640px) and (max-width: 960px) {
+  .input-container {
+    width: 90%;
+  }
+
+  .output-container {
+    width: 10%;
+  }
+
+  .output-mode .input-container {
+    width: 10%;
+  }
+  .output-mode .output-container {
+    width: 90%;
+  }
+  .output-mode #input {
+    overflow: hidden;
+  }
+}
+@media only screen and (max-width: 639px) {
+  body {
+    height: auto;
+    overflow: auto;
+  }
+
+  header {
+    position: relative;
+  }
+
+  main {
+    height: auto;
+    overflow: auto;
+    position: relative;
+    box-sizing: border-box;
+    padding-top: 4px;
+  }
+
+  .input-container {
+    height: auto;
+    width: 100%;
+    clear: both;
+  }
+  .input-container #input {
+    height: auto;
+    min-height: 320px;
+  }
+
+  .output-container {
+    width: 100%;
+    height: auto;
+    padding-left: 0;
+  }
+  .output-container #output {
+    min-height: 300px;
+  }
+}
