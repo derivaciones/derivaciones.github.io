@@ -114,13 +114,13 @@ window.onload = function() {
     }
   ];
   handleKey = function(evnt) {
-    var action, keyCode, _i, _len;
+    var action, i, keyCode, len;
     if (!evnt.ctrlKey) {
       return true;
     }
     keyCode = evnt.keyCode;
-    for (_i = 0, _len = actions.length; _i < _len; _i++) {
-      action = actions[_i];
+    for (i = 0, len = actions.length; i < len; i++) {
+      action = actions[i];
       if (action.keyCode === keyCode) {
         writeInput(action.char);
         evnt.preventDefault();

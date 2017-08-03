@@ -184,10 +184,10 @@ validator = {};
     ARRAY: 'ARRAY'
   };
   get_node = function(parent, index) {
-    var candidate, node, _i, _len, _ref;
-    _ref = parent.children;
-    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-      node = _ref[_i];
+    var candidate, i, len, node, ref1;
+    ref1 = parent.children;
+    for (i = 0, len = ref1.length; i < len; i++) {
+      node = ref1[i];
       if (node.type === ITERATION) {
         candidate = get_node(node, index);
         if (candidate) {
@@ -199,9 +199,9 @@ validator = {};
     }
   };
   exist = function(elem, previous) {
-    var parsed, _i, _len;
-    for (_i = 0, _len = previous.length; _i < _len; _i++) {
-      parsed = previous[_i];
+    var i, len, parsed;
+    for (i = 0, len = previous.length; i < len; i++) {
+      parsed = previous[i];
       if (equals(elem, parsed.expression)) {
         return true;
       }
@@ -210,22 +210,22 @@ validator = {};
   };
   get_refs = {
     RANGE: function(ast, references, max) {
-      var index, result, _i, _ref, _ref1;
+      var i, index, ref1, ref2, result;
       if (max <= references.first || max <= references.last) {
         return error.reference_later(ast);
       }
       result = [];
-      for (index = _i = _ref = references.first, _ref1 = references.last; _ref <= _ref1 ? _i <= _ref1 : _i >= _ref1; index = _ref <= _ref1 ? ++_i : --_i) {
+      for (index = i = ref1 = references.first, ref2 = references.last; ref1 <= ref2 ? i <= ref2 : i >= ref2; index = ref1 <= ref2 ? ++i : --i) {
         result.push(get_node(ast.root, index));
       }
       return result;
     },
     ARRAY: function(ast, references, max) {
-      var index, result, _i, _len, _ref;
+      var i, index, len, ref1, result;
       result = [];
-      _ref = references.indices;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        index = _ref[_i];
+      ref1 = references.indices;
+      for (i = 0, len = ref1.length; i < len; i++) {
+        index = ref1[i];
         if (max <= index) {
           return error.reference_later(ast);
         }
@@ -235,14 +235,14 @@ validator = {};
     }
   };
   match_references = function(first, last, ref) {
-    var expected, _i;
+    var expected, i, ref1, ref2;
     if (ref.type === REF.RANGE) {
       return first === ref.first && last === ref.last || first === ref.last && last === ref.first;
     } else {
       if (ref.indices.length !== (last - first + 1)) {
         return false;
       }
-      for (expected = _i = first; first <= last ? _i <= last : _i >= last; expected = first <= last ? ++_i : --_i) {
+      for (expected = i = ref1 = first, ref2 = last; ref1 <= ref2 ? i <= ref2 : i >= ref2; expected = ref1 <= ref2 ? ++i : --i) {
         if (ref.indices.indexOf(expected) === -1) {
           return false;
         }
@@ -331,12 +331,12 @@ validator = {};
     DISJUNCTION: function(ast, parsed) {
       var classified, classify, conditionals, dynamic_match_antedecent, expression, first_cond, match_antedecent, previous, references, second_cond, v_left, v_right;
       classify = function(elements, ast) {
-        var classified, element, expression, _i, _len;
+        var classified, element, expression, i, len;
         classified = {
           conditionals: []
         };
-        for (_i = 0, _len = elements.length; _i < _len; _i++) {
-          element = elements[_i];
+        for (i = 0, len = elements.length; i < len; i++) {
+          element = elements[i];
           expression = extract(element.expression);
           if (expression.type === BINARY) {
             if (expression.connector.type === DISJUNCTION) {
@@ -650,7 +650,7 @@ validator = {};
     return ast;
   };
   return validator.validate = function(raw, parser) {
-    var ast, context, err, error_node, line, lines, parent, parsed, _i, _len;
+    var ast, context, err, error1, error_node, i, len, line, lines, parent, parsed;
     lines = raw.split('\n');
     ast = {
       root: {
@@ -661,8 +661,8 @@ validator = {};
       indices: []
     };
     ast.current = ast.root;
-    for (_i = 0, _len = lines.length; _i < _len; _i++) {
-      line = lines[_i];
+    for (i = 0, len = lines.length; i < len; i++) {
+      line = lines[i];
       if (/^(\s)*$/.test(line)) {
         continue;
       }
@@ -674,8 +674,8 @@ validator = {};
       }
       try {
         parsed = parser.parse(line);
-      } catch (_error) {
-        err = _error;
+      } catch (error1) {
+        err = error1;
         ast.error = true;
         context = {
           rawLine: line.trim(),

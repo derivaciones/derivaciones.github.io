@@ -33,13 +33,13 @@ window.onload = function() {
   }
   input.value = load();
   check_code = function() {
-    var ast, evnt, parsed, parser;
+    var ast, error, evnt, parsed, parser;
     parser = new elementos.Parser;
     try {
       ast = parser.parse(input.value);
       parsed = JSON.stringify(ast, null, 2);
-    } catch (_error) {
-      evnt = _error;
+    } catch (error) {
+      evnt = error;
       parsed = evnt.message;
     }
     return output.value = parsed;
@@ -62,7 +62,7 @@ window.onload = function() {
     return input.focus();
   };
   return fill_code = function() {
-    var ast, evnt, parser;
+    var ast, error, evnt, parser;
     while (pretty.firstChild) {
       pretty.removeChild(pretty.firstChild);
     }
@@ -71,8 +71,8 @@ window.onload = function() {
       ast = parser.parse(input.value);
       coder.process(ast);
       return pretty.appendChild(ast.view);
-    } catch (_error) {
-      evnt = _error;
+    } catch (error) {
+      evnt = error;
       return pretty.innerHTML = evnt.message.replace(/\n/g, '</br>');
     }
   };

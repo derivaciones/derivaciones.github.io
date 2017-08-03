@@ -74,17 +74,17 @@ viewer = {};
       return process_children(node, error);
     },
     ERROR: function(node) {
-      var error, error_view, _i, _len, _ref, _results;
+      var error, error_view, i, len, ref, results;
       node.view = mk_div(['errors']);
-      _ref = node.content.split('\n');
-      _results = [];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        error = _ref[_i];
+      ref = node.content.split('\n');
+      results = [];
+      for (i = 0, len = ref.length; i < len; i++) {
+        error = ref[i];
         error_view = mk_div(['error']);
         node.view.appendChild(error_view);
-        _results.push(error_view.appendChild(mk_paragraph(error, ['error-text'])));
+        results.push(error_view.appendChild(mk_paragraph(error, ['error-text'])));
       }
-      return _results;
+      return results;
     }
   };
   mk_rule = function(rule) {
@@ -102,11 +102,11 @@ viewer = {};
     return mk_ref(rule);
   };
   mk_ref = function(rule) {
-    var index, indices, _i, _ref;
+    var i, index, indices, ref;
     rule.view.appendChild(mk_span('(', ['parenthesis', 'ref']));
     if (rule.references.type === 'ARRAY') {
       indices = rule.references.indices;
-      for (index = _i = 0, _ref = indices.length - 1; 0 <= _ref ? _i < _ref : _i > _ref; index = 0 <= _ref ? ++_i : --_i) {
+      for (index = i = 0, ref = indices.length - 1; 0 <= ref ? i < ref : i > ref; index = 0 <= ref ? ++i : --i) {
         rule.view.appendChild(mk_span(indices[index], ['reference-index']));
         rule.view.appendChild(mk_span(',', ['reference-reparator']));
       }
@@ -122,37 +122,37 @@ viewer = {};
     return mk_expression[expression.type](expression);
   };
   process_children = function(parent, error) {
-    var node, _i, _len, _ref, _results;
-    _ref = parent.children;
-    _results = [];
-    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-      node = _ref[_i];
+    var i, len, node, ref, results;
+    ref = parent.children;
+    results = [];
+    for (i = 0, len = ref.length; i < len; i++) {
+      node = ref[i];
       mk[node.type](node, error);
-      _results.push(parent.view.appendChild(node.view));
+      results.push(parent.view.appendChild(node.view));
     }
-    return _results;
+    return results;
   };
   mk_index = function(ast) {
-    var elem, rules, width_klass, _i, _len, _ref, _results;
+    var elem, i, len, ref, results, rules, width_klass;
     width_klass = 'index-container-' + ast.length.toString().length;
     rules = mk_div(['index-container', width_klass]);
     ast.root.view.appendChild(rules);
-    _ref = ast.indices;
-    _results = [];
-    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-      elem = _ref[_i];
-      _results.push(rules.appendChild(mk_span(elem.index, ['index', elem.klass])));
+    ref = ast.indices;
+    results = [];
+    for (i = 0, len = ref.length; i < len; i++) {
+      elem = ref[i];
+      results.push(rules.appendChild(mk_span(elem.index, ['index', elem.klass])));
     }
-    return _results;
+    return results;
   };
   viewer.process = function(ast) {
-    var lines, node, _i, _len, _ref;
+    var i, len, lines, node, ref;
     ast.root.view = mk_div(['root']);
     mk_index(ast);
     lines = mk_div(['lines']);
-    _ref = ast.root.children;
-    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-      node = _ref[_i];
+    ref = ast.root.children;
+    for (i = 0, len = ref.length; i < len; i++) {
+      node = ref[i];
       mk[node.type](node, ast.error);
       lines.appendChild(node.view);
       add_classes(node.view, ['first-level']);
@@ -160,12 +160,12 @@ viewer = {};
     return ast.root.view.appendChild(lines);
   };
   add_classes = function(element, classes) {
-    var klass, _i, _len;
+    var i, klass, len;
     if (classes == null) {
       classes = [];
     }
-    for (_i = 0, _len = classes.length; _i < _len; _i++) {
-      klass = classes[_i];
+    for (i = 0, len = classes.length; i < len; i++) {
+      klass = classes[i];
       element.classList.add(klass);
     }
     return element;

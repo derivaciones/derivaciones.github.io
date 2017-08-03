@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .help-button {
   float: right;
   background-color: #4CAF50;
@@ -46,7 +45,7 @@
 }
 #execCode > span:after,
 #checkCode > span:after {
-  content: '»';
+  content: '>>';
   position: absolute;
   opacity: 0;
   top: 0;
