@@ -5,7 +5,7 @@ window.ERROR_ELEMENT = {
     content: 'Para justificar una eliminación de la conjunción se ' + 'debe remitir a una única fórmula previa'
   },
   REFERENCIA_A_LINEA_POSTERIOR: {
-    content: 'Toda línea que se agrega en la derivación debe estar justificada ' + 'o cumpliendo con los requisitos de una regla, o indicada como supuesto ' + 'premisa del argumento o como supuesto de una regla particular'
+    content: 'Toda fórmula que se agrega en la derivación debe estar justificada ' + 'por una o varias líneas previas'
   },
   INTRODUCCION_CONJUNCION_CONECTOR_INCORRECTO: {
     content: 'La introducción de la conjunción remite indefectiblemente a una ' + 'formula que tiene el símbolo Λ como conector dominante'
@@ -43,6 +43,12 @@ window.ERROR_ELEMENT = {
   CIERRE_ITERACION_SIN_SUPUESTO: {
     content: 'Para cancelar un supuesto en el validador con << se requiere ' + 'haber abierto previamente dicho supuesto. Es condición necesaria que ' + 'haya un supuesto para que el mismo pueda ser cancelado'
   },
+  CIERRE_ITERACION_ELEMENTO_UNICO: {
+    context: {
+      suposed: 'El supuesto que conforma la unica formula de la iteracion'
+    },
+    content: 'Para cancelar un supuesto en el validador con << se requiere ' + 'haber arribado a una nueva formula dentro del contexto de suposición ' + '\n' + 'Para el caso particular en el que se pretende generar A → A es ' + 'necesario utilizar la regla de repetición' + '\n' + '1:${suposed} supuesto' + '\n' + '2:${suposed} R(1)' + '\n' + '<<' + '\n' + '3:${suposed} → ${suposed} I→(1,2)'
+  },
   ELIMINACION_NEGACION_NO_CONTRADICCION: {
     content: 'La aplicación de la regla de eliminación de la negación tiene ' + 'como contenido una contradicción (⊥)'
   },
@@ -53,7 +59,7 @@ window.ERROR_ELEMENT = {
     content: '' + 'La regla de eliminación del condicional se justifica a partir de ' + 'dos fórmulas previas, de las cuales, una tiene un condicional ' + 'como conectiva dominante (A→B) y la otra remmite al antecedente ' + 'del condicional formulado. Por ejemplo:' + '\n' + '1:(pVq)→p premisa' + '\n' + '2:(pVq) premisa' + '\n' + '3:p E→(1,2)' + '\n' + 'Asegurece también de indicar las referencias correctamente y si ' + 'efectivamente responden al esquema señalado'
   },
   ELIMINACION_DISYUNCION_REFERENCIAS_INVALIDAS: {
-    content: '' + 'La regla de eliminación de la disyunción requiere justificarse a ' + 'partir de tres fórmulas previas, de las cuales,una de ellas tiene ' + 'una disyunción como conectiva dominante, mientras que las otras dos, ' + 'son condicionales que tienen como antecedente los disyuntos contenidos ' + 'por la disyunción ofrecida y como consecuente la fórmula a la que se ' + 'pretende arribar. Por ejemplo:' + '\n' + '1:pVq premisa' + '\n' + '2:p→s premisa' + '\n' + '3:q→s premisa' + '\n' + '4:s EV(1,2,3)' + '\n' + 'Asegurece también de indicar las referencias correctamente y si están ' + 'efectivamente disponibles los elementos señalados'
+    content: '' + 'La regla de eliminación de la disyunción requiere justificarse a ' + 'partir de tres fórmulas previas, de las cuales,una de ellas tiene ' + 'una disyunción como conectiva dominante, mientras que las otras dos, ' + 'son condicionales que tienen como antecedente los disyuntos contenidos ' + 'por la disyunción ofrecida y como consecuente la fórmula a la que se ' + 'pretende arribar. Por ejemplo:' + '\n' + '1:pVq premisa' + '\n' + '2:p→s premisa' + '\n' + '3:q→s premisa' + '\n' + '4:s EV(1,2,3)' + '\n' + 'Asegurece también de indicar las referencias correctamente y verifique ' + 'si efectivamente se encuentran disponibles los elementos señalados'
   },
   DOBLE_NEGACION_TIPO_REFERENCIAS_INVALIDAS: {
     content: '' + 'La regla de la doble negación únicamente puede aplicarse sobre una ' + 'fórmula que se encuentra afectada por dos negaciones. Por ejemplo:' + '\n' + '1:¬¬(pVq) premisa' + '\n' + '2:(pVq) ¬¬(1)' + '\n' + 'Asegurece también de indicar las referencias correctamente'
@@ -112,7 +118,7 @@ window.ERROR_ELEMENT = {
     content: 'La reglas que admiten supuestos requieren como resultado una ' + 'fórmula particular. No pueden jamás finalizar en la cancelación del ' + 'supuesto.'
   },
   FINALIZACION_DENTRO_DE_ITERACION: {
-    content: 'El resultado de una regla que admite la formulación de un ' + 'supuesto no puede determinarse antes de cancelar dicho supuesto.'
+    content: 'Los supuestos deben cancelarse:' + '\n' + 'Una vez que arribamos al resultado esperado, para denotar la cancelación ' + 'del supuesto debe debe indicarlo con los símbolos ' + '\n' + '<<'
   },
   CIERRES_DE_ITERACION_CONSECUTIVOS: {
     content: 'Hay que cancelar correctamente los supuestos en caso de haber ' + 'supuestos anidados. Teniendo primacía los últimos supuestos abiertos ' + 'en el orden de su cancelación'

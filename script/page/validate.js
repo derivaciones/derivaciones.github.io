@@ -1,20 +1,24 @@
 var validate;
 
 window.onload = function() {
-  var ast, example, i, index, len, parser, results, validateInput;
+  var ast, codeElem, container, example, i, index, len, parser, rawContent, results, validateInput;
   validateInput = document.querySelector('#validatePreety');
-  parser = new elementos.Parser;
+  parser = new derivaciones.Parser;
   results = [];
   for (index = i = 0, len = validate.length; i < len; index = ++i) {
     example = validate[index];
     ast = validator.validate(example, parser);
     if (ast) {
       viewer.process(ast);
-      if (index % 3 === 0) {
-        ast.root.view.classList.add('pull-left');
-      }
       ast.root.view.title = example;
-      results.push(validateInput.appendChild(ast.root.view));
+      container = document.createElement('div');
+      container.classList.add('valid-container');
+      codeElem = document.createElement('pre');
+      container.appendChild(codeElem);
+      container.appendChild(ast.root.view);
+      rawContent = document.createTextNode(example);
+      codeElem.appendChild(rawContent);
+      results.push(validateInput.appendChild(container));
     } else {
       results.push(validateInput.appendChild(document.createTextNode('error al procesar')));
     }

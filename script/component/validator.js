@@ -165,6 +165,16 @@ validator = {};
       ast.current.children.push(CLOSE_ITERATION_ERROR);
       return ast.current.children.push(ERROR_ELEMENT.CIERRE_ITERACION_SIN_SUPUESTO);
     },
+    unique_element_iteration: function(ast, suposed) {
+      var context, error_node;
+      ast.error = true;
+      ast.current.children.push(CLOSE_ITERATION_ERROR);
+      context = {
+        suposed: print(suposed)
+      };
+      error_node = interpolates(ERROR_ELEMENT.CIERRE_ITERACION_ELEMENTO_UNICO, context);
+      return ast.current.children.push(error_node);
+    },
     unexpected_after_iteration: function(ast, parsed) {
       ast.error = true;
       ast.current.children.push(parsed);
@@ -625,8 +635,14 @@ validator = {};
     },
     SUPPOSED_END: {
       process: function(ast, parsed) {
+        var suposed;
         if (ast.current.type !== ITERATION) {
           return error.unexpected_close_iteration(ast);
+        }
+        if (ast.current.children.length < 2) {
+          suposed = extract(ast.current.children[0].expression);
+          console.log(suposed);
+          return error.unique_element_iteration(ast, suposed);
         }
         parsed.iteration = ast.current;
         ast.current = ast.current.parent;

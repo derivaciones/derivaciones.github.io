@@ -25,18 +25,25 @@
   </head>
   <body>
     <header>
-      <div class="inner">
-        <a href="index.html"><h1>Derivaciones.GitHub.io</h1></a>
-        <a href="https://github.com/derivaciones" class="button">
-          <small class="follow">Follow me on</small>
-          <span class="github">GitHub</span><span class="fa fa-arrow-right"></span>
-        </a>
+      <div class="">
+        <div class="inner">
+          <a href="index.html"><h1>Derivaciones.GitHub.io</h1></a>
+          <a href="https://github.com/derivaciones" class="button">
+            <small class="follow">Follow me on</small>
+            <span class="github">GitHub</span><span class="fa fa-arrow-right"></span>
+          </a>
+        </div>
       </div>
 
     </header>
     <main>
       <div class="input-container">
-        <textarea id="input" onkeyup="inputChange()" onfocus="inputMode()" spellcheck="false"></textarea>
+        <textarea id="input"
+          onkeydown="inputChange()"
+          onfocus="inputMode()"
+          onclick="inputMode()"
+          spellcheck="false"
+        ></textarea>
         <div class="menu-container">
           <div class="menu">
             <button type="button" id="process" class="menu-button-icon" title="process">
@@ -69,6 +76,7 @@
           </div>
         </div>
       </div>
+
       <div class="output-container">
         <div id="output" onclick="outputMode()"></div>
       </div>

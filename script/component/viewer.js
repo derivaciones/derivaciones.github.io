@@ -4,6 +4,49 @@ viewer = {};
 
 (function() {
   var add_classes, mk, mk_div, mk_expression, mk_img, mk_index, mk_paragraph, mk_pre, mk_ref, mk_rule, mk_single, mk_span, process_children, process_errors, process_expression;
+  add_classes = function(element, classes) {
+    var i, klass, len;
+    if (classes == null) {
+      classes = [];
+    }
+    for (i = 0, len = classes.length; i < len; i++) {
+      klass = classes[i];
+      element.classList.add(klass);
+    }
+    return element;
+  };
+  mk_span = function(text, classes) {
+    var view;
+    view = document.createElement('span');
+    text = document.createTextNode(text);
+    view.appendChild(text);
+    return add_classes(view, classes);
+  };
+  mk_paragraph = function(text, classes) {
+    var view;
+    view = document.createElement('p');
+    text = document.createTextNode(text);
+    view.appendChild(text);
+    return add_classes(view, classes);
+  };
+  mk_div = function(classes) {
+    return add_classes(document.createElement('div'), classes);
+  };
+  mk_img = function(classes, src) {
+    var image;
+    image = add_classes(document.createElement('IMG'), classes);
+    image.src = src;
+    return image;
+  };
+  mk_pre = function(classes) {
+    return add_classes(document.createElement('pre'), classes);
+  };
+  mk_single = function(text, level, classes) {
+    var single;
+    single = mk_div(classes);
+    single.appendChild(mk_span(mkindent(level) + text));
+    return single;
+  };
   process_errors = function(node, error) {
     if (!node.ok) {
       if (error) {
@@ -74,14 +117,22 @@ viewer = {};
       return process_children(node, error);
     },
     ERROR: function(node) {
-      var error, error_view, i, len, ref, results;
-      node.view = mk_div(['errors']);
+      var container, error, error_view, i, len, ref, results;
+      if (node.name === 'FINALIZACION_DENTRO_DE_ITERACION') {
+        node.view = mk_div(['error-wrapper']);
+        node.view.appendChild(mk_img(['state-error-left'], 'asset/error.png'));
+        container = mk_div(['errors']);
+        node.view.appendChild(container);
+      } else {
+        node.view = mk_div(['errors']);
+        container = node.view;
+      }
       ref = node.content.split('\n');
       results = [];
       for (i = 0, len = ref.length; i < len; i++) {
         error = ref[i];
         error_view = mk_div(['error']);
-        node.view.appendChild(error_view);
+        container.appendChild(error_view);
         results.push(error_view.appendChild(mk_paragraph(error, ['error-text'])));
       }
       return results;
@@ -145,7 +196,7 @@ viewer = {};
     }
     return results;
   };
-  viewer.process = function(ast) {
+  return viewer.process = function(ast) {
     var i, len, lines, node, ref;
     ast.root.view = mk_div(['root']);
     mk_index(ast);
@@ -158,48 +209,5 @@ viewer = {};
       add_classes(node.view, ['first-level']);
     }
     return ast.root.view.appendChild(lines);
-  };
-  add_classes = function(element, classes) {
-    var i, klass, len;
-    if (classes == null) {
-      classes = [];
-    }
-    for (i = 0, len = classes.length; i < len; i++) {
-      klass = classes[i];
-      element.classList.add(klass);
-    }
-    return element;
-  };
-  mk_span = function(text, classes) {
-    var view;
-    view = document.createElement('span');
-    text = document.createTextNode(text);
-    view.appendChild(text);
-    return add_classes(view, classes);
-  };
-  mk_paragraph = function(text, classes) {
-    var view;
-    view = document.createElement('p');
-    text = document.createTextNode(text);
-    view.appendChild(text);
-    return add_classes(view, classes);
-  };
-  mk_div = function(classes) {
-    return add_classes(document.createElement('div'), classes);
-  };
-  mk_img = function(classes, src) {
-    var image;
-    image = add_classes(document.createElement('IMG'), classes);
-    image.src = src;
-    return image;
-  };
-  mk_pre = function(classes) {
-    return add_classes(document.createElement('pre'), classes);
-  };
-  return mk_single = function(text, level, classes) {
-    var single;
-    single = mk_div(classes);
-    single.appendChild(mk_span(mkindent(level) + text));
-    return single;
   };
 })();
