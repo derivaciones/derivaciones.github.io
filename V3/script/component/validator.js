@@ -134,17 +134,6 @@ validator = {};
       ast.error = true;
       return ast.current.children.push(ERROR_ELEMENT.ELIMINACION_DISYUNCION_REFERENCIAS_INVALIDAS);
     },
-    disjunction_elimination_unique_conditional: function(ast, expression, conditional, disjunction) {
-      var context, error_node;
-      ast.error = true;
-      context = {
-        conditional: print(conditional),
-        disjunction: print(disjunction),
-        expression: print(expression)
-      };
-      error_node = interpolates(ERROR_ELEMENT.ELIMINACION_DISYUNCION_CONDICIONAL_UNICO, context);
-      return ast.current.children.push(error_node);
-    },
     double_negation_unique_reference: function(ast) {
       ast.error = true;
       return ast.current.children.push(ERROR_ELEMENT.DOBLE_NEGACION_REFERENCIAS_MULTIPLES);
@@ -358,7 +347,7 @@ validator = {};
       return parsed.ok = true;
     },
     DISJUNCTION: function(ast, parsed) {
-      var classified, classify, conditional, conditionals, disjunction, dynamic_match_antedecent, expression, first_cond, match_antedecent, previous, references, second_cond, v_left, v_right;
+      var classified, classify, conditionals, dynamic_match_antedecent, expression, first_cond, match_antedecent, previous, references, second_cond, v_left, v_right;
       classify = function(elements, ast) {
         var classified, element, expression, i, len;
         classified = {
@@ -408,9 +397,7 @@ validator = {};
       };
       if (conditionals.length === 1) {
         if (match_antedecent(v_left, v_right, first_cond, first_cond) && equals(expression, first_cond.right)) {
-          conditional = first_cond;
-          disjunction = classified.disjunction;
-          return error.disjunction_elimination_unique_conditional(ast, expression, conditional, disjunction);
+          return parsed.ok = true;
         } else {
           return error.disjunction_elimination_references(ast);
         }
