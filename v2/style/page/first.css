@@ -1,0 +1,19 @@
+header {
+  float: left;
+  width: 100%;
+  height: 110px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+main {
+  float: left;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  box-sizing: border-box;
+  padding-top: 114px;
+  padding-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+}

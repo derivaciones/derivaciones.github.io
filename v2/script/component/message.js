@@ -56,13 +56,13 @@ window.ERROR_ELEMENT = {
     content: '' + 'La eliminación de la negación se fundamenta en dos fórmulas ' + 'contradictorias. Por ejemplo: ' + '\n' + '1:(pVq)' + '\n' + '2:¬(pVq)' + '\n' + '3:⊥ E¬(1,2)' + '\n' + 'Debe asegurarse de indicar correctamente las fórmulas ' + 'contradictorias, como así también verificar si son efectivamente ' + 'contradictorias y responden al esquema A y ¬A'
   },
   ELIMINACION_CONDICIONAL_REFERENCIAS_INVALIDAS: {
-    content: '' + 'La regla de eliminación del condicional se justifica a partir de ' + 'dos fórmulas previas, de las cuales, una tiene un condicional ' + 'como conectiva dominante (A→B) y la otra remmite al antecedente ' + 'del condicional formulado. Por ejemplo:' + '\n' + '1:(pVq)→p premisa' + '\n' + '2:(pVq) premisa' + '\n' + '3:p E→(1,2)' + '\n' + 'Asegúrese también de indicar las referencias correctamente y si ' + 'efectivamente responden al esquema señalado'
+    content: '' + 'La regla de eliminación del condicional se justifica a partir de ' + 'dos fórmulas previas, de las cuales, una tiene un condicional ' + 'como conectiva dominante (A→B) y la otra remmite al antecedente ' + 'del condicional formulado. Por ejemplo:' + '\n' + '1:(pVq)→p premisa' + '\n' + '2:(pVq) premisa' + '\n' + '3:p E→(1,2)' + '\n' + 'Asegurece también de indicar las referencias correctamente y si ' + 'efectivamente responden al esquema señalado'
   },
   ELIMINACION_DISYUNCION_REFERENCIAS_INVALIDAS: {
-    content: '' + 'La regla de eliminación de la disyunción requiere justificarse a ' + 'partir de tres fórmulas previas, de las cuales,una de ellas tiene ' + 'una disyunción como conectiva dominante, mientras que las otras dos, ' + 'son condicionales que tienen como antecedente los disyuntos contenidos ' + 'por la disyunción ofrecida y como consecuente la fórmula a la que se ' + 'pretende arribar. Por ejemplo:' + '\n' + '1:pVq premisa' + '\n' + '2:p→s premisa' + '\n' + '3:q→s premisa' + '\n' + '4:s EV(1,2,3)' + '\n' + 'Asegúrese también de indicar las referencias correctamente y verifique ' + 'si efectivamente se encuentran disponibles los elementos señalados'
+    content: '' + 'La regla de eliminación de la disyunción requiere justificarse a ' + 'partir de tres fórmulas previas, de las cuales,una de ellas tiene ' + 'una disyunción como conectiva dominante, mientras que las otras dos, ' + 'son condicionales que tienen como antecedente los disyuntos contenidos ' + 'por la disyunción ofrecida y como consecuente la fórmula a la que se ' + 'pretende arribar. Por ejemplo:' + '\n' + '1:pVq premisa' + '\n' + '2:p→s premisa' + '\n' + '3:q→s premisa' + '\n' + '4:s EV(1,2,3)' + '\n' + 'Asegurece también de indicar las referencias correctamente y verifique ' + 'si efectivamente se encuentran disponibles los elementos señalados'
   },
   DOBLE_NEGACION_TIPO_REFERENCIAS_INVALIDAS: {
-    content: '' + 'La regla de la doble negación únicamente puede aplicarse sobre una ' + 'fórmula que se encuentra afectada por dos negaciones. Por ejemplo:' + '\n' + '1:¬¬(pVq) premisa' + '\n' + '2:(pVq) ¬¬(1)' + '\n' + 'Asegúrese también de indicar las referencias correctamente'
+    content: '' + 'La regla de la doble negación únicamente puede aplicarse sobre una ' + 'fórmula que se encuentra afectada por dos negaciones. Por ejemplo:' + '\n' + '1:¬¬(pVq) premisa' + '\n' + '2:(pVq) ¬¬(1)' + '\n' + 'Asegurece también de indicar las referencias correctamente'
   },
   DOBLE_NEGACION_RESULTADO_INVALIDO: {
     context: {
@@ -89,20 +89,14 @@ window.ERROR_ELEMENT = {
       leftExpression: 'primer disyunto, está ubicado a la izquierda del conector V',
       rightExpression: 'segundo disyunto, está ubicado a la derecha del conector V'
     },
-    content: '' + 'Para aplicar correctamente la regla de introducción de la disyunción ' + 'se debe remitir a al menos uno de los dos disyuntos que la conforman' + '\n' + '${leftExpression}' + '\n' + '${rightExpression}' + '\n' + 'Asegúrese también de indicar las referencias correctamente'
-  },
-  INTRODUCCION_DISYUNCION_REFERENCIA_EXTRA: {
-    content: '' + 'Para aplicar correctamente la regla de introducción de la disyunción ' + 'se debe remitir a una única referencia'
+    content: '' + 'Para aplicar correctamente la regla de introducción de la disyunción ' + 'se debe remitir a al menos uno de los dos disyuntos que la conforman' + '\n' + '${leftExpression}' + '\n' + '${rightExpression}' + '\n' + 'Asegurece también de indicar las referencias correctamente'
   },
   INTRODUCCION_CONJUNCION_REFERENCIA_INVALIDA: {
     context: {
       leftExpression: 'la fórmula a la izquierda del conector Λ',
       rightExpression: 'la fórmula a la derecha del conector Λ'
     },
-    content: '' + 'Para aplicar correctamente la regla de introducción la conjunción se ' + 'debe remitir a las dos formulas que la conforman' + '\n' + '${leftExpression}' + '\n' + '${rightExpression}' + '\n' + 'Asegúrese también de indicar las referencias correctamente'
-  },
-  INTRODUCCION_CONJUNTION_REFERENCIA_EXTRA: {
-    content: '' + 'Para aplicar correctamente la regla de introducción la conjunción ' + 'se debe remitir a dos referencias distintas' + '\n' + 'Para el caso particular en el que se pretende demostrar: ' + '\n' + 'A → (A Λ A)' + '\n' + 'Deberá utilizarse la repetición' + '\n' + '1: A premisa' + '\n' + '2: A R(1)' + '\n' + '3: A Λ A IΛ(1,2)'
+    content: '' + 'Para aplicar correctamente la regla de introducción la conjunción se ' + 'debe remitir a las dos formulas que la conforman' + '\n' + '${leftExpression}' + '\n' + '${rightExpression}' + '\n' + 'Asegurece también de indicar las referencias correctamente'
   },
   ITERACION_REFERENCIA_INVALIDA: {
     context: {

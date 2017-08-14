@@ -75,14 +75,6 @@ validator = {};
       error_node = interpolates(ERROR_ELEMENT.INTRODUCCION_DISYUNCION_REFERENCIA_INVALIDA, context);
       return ast.current.children.push(error_node);
     },
-    disjunction_introduction_references_aridity: function(ast, parsed) {
-      ast.error = true;
-      return ast.current.children.push(ERROR_ELEMENT.INTRODUCCION_DISYUNCION_REFERENCIA_EXTRA);
-    },
-    conjunction_introduction_references_aridity: function(ast, parsed) {
-      ast.error = true;
-      return ast.current.children.push(ERROR_ELEMENT.INTRODUCCION_CONJUNTION_REFERENCIA_EXTRA);
-    },
     conditional_connector: function(ast) {
       ast.error = true;
       return ast.current.children.push(ERROR_ELEMENT.INTRODUCCION_CONDICIONAL_CONECTOR_INCORRECTO);
@@ -468,9 +460,6 @@ validator = {};
         return;
       }
       if (exist(expression.left, previous) && exist(expression.right, previous)) {
-        if (previous.length !== 2 || (previous[0] === previous[1])) {
-          return error.conjunction_introduction_references_aridity(ast, parsed);
-        }
         return parsed.ok = true;
       } else {
         return error.conjunction_introduction_references(ast, expression.left, expression.right);
@@ -488,9 +477,6 @@ validator = {};
         return;
       }
       if (exist(expression.left, previous) || exist(expression.right, previous)) {
-        if (previous.length !== 1) {
-          return error.disjunction_introduction_references_aridity(ast, parsed);
-        }
         return parsed.ok = true;
       } else {
         return error.disjunction_introduction(ast, expression.left, expression.right);
