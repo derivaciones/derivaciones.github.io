@@ -6,90 +6,438 @@
     padding-left: 15px;
   }
 }
+.sidebar {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1px;
+  transition: all 0.5s;
+  height: 0px;
+  overflow: hidden;
+}
+.sidebar ul {
+  transition: all 0.5s;
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  float: left;
+}
+.sidebar li {
+  display: block;
+  box-sizing: border-box;
+  padding: 1px;
+  width: 50%;
+  float: left;
+}
+.sidebar a {
+  box-sizing: border-box;
+  text-decoration: none;
+  width: 100%;
+  display: block;
+  padding: 5px;
+  background-color: #00bfff;
+  color: #FFF;
+  font-weight: 600;
+  font-family: monospace;
+}
+.sidebar a .active, .sidebar a:hover {
+  background-color: #008fCD;
+}
+
+.show-sidebar .sidebar {
+  height: auto;
+}
+
+@media (min-width: 480px) {
+  .show-sidebar .sidebar li {
+    width: 33.33%;
+  }
+}
+@media (min-width: 768px) {
+  body.show-sidebar div.sidebar,
+  body div.sidebar {
+    top: 80px;
+    position: absolute;
+    z-index: 2;
+    width: 0px;
+    height: auto;
+  }
+  body.show-sidebar div.sidebar ul,
+  body div.sidebar ul {
+    margin-top: 26px;
+    width: 100%;
+  }
+  body.show-sidebar div.sidebar ul li,
+  body div.sidebar ul li {
+    padding: 1px;
+    width: 100%;
+  }
+
+  body.show-sidebar div.sidebar {
+    width: 150px;
+  }
+  body.show-sidebar main {
+    padding-left: 150px;
+  }
+
+  body.full div.sidebar,
+  body.show-sidebar.full div.sidebar {
+    top: 50px;
+  }
+}
+@media (min-width: 992px) {
+  body.show-sidebar div.sidebar ul,
+  body div.sidebar ul {
+    margin-top: 31px;
+  }
+}
+@media (min-height: 500px) and (min-width: 768px) {
+  body.show-sidebar div.sidebar ul,
+  body div.sidebar ul {
+    margin-top: 0px;
+  }
+}
+.help-page .help-link,
+.index-page .index-link,
+.examples-page .examples-link {
+  background-color: #008fCD;
+  color: #00Dfff;
+}
+
+.no-href {
+  cursor: pointer;
+}
+
 body {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  width: 100%;
+  height: auto;
 }
 
 header {
-  position: absolute;
-  z-index: 2;
-  padding-top: 15px;
-  padding-bottom: 10px;
-  background-size: 70px;
-  background-position: 0 -30px;
-}
-header h1 {
-  font-size: 3.5em;
-  line-height: 1.4em;
-}
-
-#main-content {
+  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
+  background: #2e7bcf url(../asset/header-bg.jpg) 0 0 repeat-x;
+  border-bottom: solid 1px #275da1;
+  height: 27px;
   width: 100%;
+  transition: all .5s;
+  box-sizing: border-box;
+  padding: 0;
+}
+header a {
+  text-decoration: none;
+}
+header .toggle-menu {
+  transition: all .5s;
+  color: #DDD;
+  position: absolute;
+  top: 3px;
+  left: 7px;
+}
+header .toggle-menu:hover {
+  color: #FFF;
+}
+header .header-inner {
+  position: relative;
+  width: 100%;
+  padding: 0px;
+}
+header .header-inner .index-link h1 {
+  color: #fff;
+  margin: 0;
+  margin-left: 5px;
+  font-weight: normal;
+  font-size: 1.2rem;
+  text-align: center;
+  transition: all 0.5s;
+}
+header .header-inner .github-link {
+  border: 1px solid white;
+  border-radius: 5px;
+  position: absolute;
+  float: right;
+  top: 2px;
+  right: 10px;
+  padding: 0px;
+  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
+  color: #fff;
+}
+header .header-inner .github-link .github-left {
+  transition: all .5s;
+  float: left;
+  width: 12px;
+  padding: 4px 0px 3px 4px;
+}
+header .header-inner .github-link .github-left .github-logo {
+  transition: all .5s;
+  float: left;
+  width: 12px;
+}
+header .header-inner .github-link .github-right {
+  transition: margin .5s, width .5s;
+  float: left;
+  width: 40px;
+  margin: 0;
+  margin-top: 0;
+  margin-left: 8px;
+}
+header .header-inner .github-link .github-right .follow-me {
+  font-size: 5px;
+  line-height: normal;
+  margin-top: 2px;
+  float: left;
+}
+header .header-inner .github-link .github-right .github {
+  font-size: 8px;
+  line-height: normal;
+  margin-top: 0px;
+  float: left;
+  clear: left;
+}
+header .header-inner .github-link .github-right .github-arrow {
+  opacity: 0;
+  font-size: 5px;
+  margin-left: 2px;
+  line-height: 12px;
+  float: left;
+}
+header .header-inner .github-link .github-right .github-arrow i.fa {
+  transform: rotate(-45deg);
+}
+header .header-inner .github-link:hover .github-left {
+  width: 10px;
+  padding: 5px 0px 4px 4px;
+}
+header .header-inner .github-link:hover .github-left .github-logo {
+  width: 10px;
+}
+header .header-inner .github-link:hover .github-right {
+  width: 46px;
+  margin-left: 4px;
+}
+header .header-inner .github-link:hover .github-right .github-arrow {
+  opacity: 1;
+}
+header .header-inner .github-link:hover .github-right .github-arrow .fa {
+  animation-name: move;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
-.inner {
-  width: 80%;
-  margin: 0 10%;
+main {
+  transition: all 0.5s;
+  background-color: inherit;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0px;
 }
 
-code.bold {
-  font-weight: bold;
-}
-
-@media only screen and (min-width: 768px) {
-  header a.button {
-    transition: all 0.5s;
-    margin-right: -12px;
-    padding-left: 80px;
+@media (min-width: 480px) {
+  header {
+    height: 80px;
   }
-  header a.button .fa {
-    -moz-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    margin-left: 5px;
-    transition: opacity .5s ease-out;
-    opacity: 0;
+  header .toggle-menu {
+    top: 56px;
   }
-  header a.button:hover {
-    padding-left: 68px;
-    margin-right: 0;
+  header .header-inner .index-link h1 {
+    font-size: 2.4rem;
+    text-align: left;
+    line-height: normal;
   }
-  header a.button:hover .fa {
-    opacity: 1;
-    animation-name: move;
-    animation-duration: 1s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+  header .header-inner .github-link {
+    border: 1.3px solid white;
+    border-radius: 10px;
+    position: absolute;
+    float: right;
+    top: 6px;
+    right: 10px;
+    padding: 0px;
+    font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
+    color: #fff;
   }
-}
-@media only screen and (min-width: 768px) and (max-width: 959px) {
-  header h1 {
-    font-size: 3em;
-    line-height: 1.6em;
+  header .header-inner .github-link .github-left {
+    float: left;
+    width: 16px;
+    height: auto;
+    padding: 8px 0px 3px 6px;
   }
-
-  .inner {
-    width: 90%;
-    margin: 0 5%;
+  header .header-inner .github-link .github-left .github-logo {
+    width: 16px;
+    height: auto;
   }
-}
-@media only screen and (max-width: 767px) {
-  header h1 {
-    font-size: 2em;
-    line-height: 1em;
+  header .header-inner .github-link .github-right {
+    transition: margin .5s, width .5s;
+    float: left;
+    width: 60px;
+    margin: 0;
+    margin-top: 0;
+    margin-left: 10px;
   }
-  header a.button {
-    padding-left: 10px;
+  header .header-inner .github-link .github-right .follow-me {
+    font-size: 8px;
+    line-height: normal;
     margin-top: 5px;
-    background-color: #EEEEFF;
   }
-  header a.button:hover {
-    background-color: #FFFFFF;
+  header .header-inner .github-link .github-right .github {
+    font-size: 12px;
+    line-height: normal;
+    margin-top: 0px;
   }
-  header a.button .fa {
-    display: none;
+  header .header-inner .github-link .github-right .github-arrow {
+    font-size: 8px;
+    margin-left: 5px;
+    line-height: 19px;
+  }
+  header .header-inner .github-link:hover .github-left {
+    padding: 8px 0px 3px 6px;
+    width: 16px;
+    height: auto;
+  }
+  header .header-inner .github-link:hover .github-left .github-logo {
+    width: 16px;
+    height: auto;
+  }
+  header .header-inner .github-link:hover .github-right {
+    width: 65px;
+    margin-left: 5px;
+  }
+
+  body.full header {
+    height: 50px;
+  }
+  body.full header .toggle-menu {
+    top: 26px;
+  }
+  body.full header .header-inner .index-link h1 {
+    font-size: 1.2rem;
+    text-align: left;
+    line-height: normal;
+    margin-left: 7px;
+  }
+}
+@media (min-width: 768px) {
+  header {
+    position: absolute;
+    z-index: 1;
+  }
+  header .header-inner .index-link h1 {
+    margin-right: 100px;
+    margin-top: 0px;
+    line-height: normal;
+    font-size: 2.8rem;
+  }
+  header .header-inner .github-link {
+    border: 2px solid white;
+    border-radius: 15px;
+    top: 10px;
+  }
+  header .header-inner .github-link .github-left {
+    width: 32px;
+    padding: 10px 0px 7px 10px;
+  }
+  header .header-inner .github-link .github-left .github-logo {
+    width: 32px;
+  }
+  header .header-inner .github-link .github-right {
+    margin-left: 20px;
+    width: 105px;
+  }
+  header .header-inner .github-link .github-right .follow-me {
+    font-size: 11px;
+    line-height: 23px;
+    margin-top: 2px;
+  }
+  header .header-inner .github-link .github-right .github {
+    font-size: 23px;
+    line-height: 23px;
+  }
+  header .header-inner .github-link .github-right .github-arrow {
+    opacity: 0;
+    font-size: 16px;
+  }
+  header .header-inner .github-link:hover .github-left {
+    width: 32px;
+    padding: 10px 0px 7px 10px;
+  }
+  header .header-inner .github-link:hover .github-left .github-logo {
+    width: 32px;
+  }
+  header .header-inner .github-link:hover .github-right {
+    width: 115px;
+    margin-left: 10px;
+  }
+  header .header-inner .github-link:hover .github-right .follow-me {
+    margin-top: 2px;
+  }
+
+  main {
+    position: absolute;
+    padding-top: 80px;
+  }
+
+  body.full header .header-inner .github-link {
+    border: 1.3px solid white;
+    border-radius: 10px;
+    position: absolute;
+    float: right;
+    top: 6px;
+    right: 10px;
+    padding: 0px;
+  }
+  body.full header .header-inner .github-link .github-left {
+    float: left;
+    width: 16px;
+    height: auto;
+    padding: 8px 0px 3px 6px;
+  }
+  body.full header .header-inner .github-link .github-left .github-logo {
+    width: 16px;
+    height: auto;
+  }
+  body.full header .header-inner .github-link .github-right {
+    width: 60px;
+    margin: 0;
+    margin-top: 0;
+    margin-left: 10px;
+  }
+  body.full header .header-inner .github-link .github-right .follow-me {
+    font-size: 8px;
+    line-height: normal;
+    margin-top: 5px;
+  }
+  body.full header .header-inner .github-link .github-right .github {
+    font-size: 12px;
+    line-height: normal;
+    margin-top: 0px;
+  }
+  body.full header .header-inner .github-link .github-right .github-arrow {
+    font-size: 8px;
+    margin-left: 5px;
+    line-height: 19px;
+  }
+  body.full header .header-inner .github-link:hover .github-left {
+    padding: 8px 0px 3px 6px;
+    width: 16px;
+    height: auto;
+  }
+  body.full header .header-inner .github-link:hover .github-left .github-logo {
+    width: 16px;
+    height: auto;
+  }
+  body.full header .header-inner .github-link:hover .github-right {
+    width: 65px;
+    margin-left: 5px;
+  }
+  body.full main {
+    padding-top: 50px;
+  }
+}
+@media (min-width: 992px) {
+  main {
+    padding-top: 80px;
+  }
+
+  body.full main {
+    padding-top: 50px;
   }
 }

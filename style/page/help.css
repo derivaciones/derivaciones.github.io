@@ -1,19 +1,245 @@
-header {
-  float: left;
-  width: 100%;
-  height: 110px;
-  overflow: hidden;
-  box-sizing: border-box;
+@keyframes move {
+  0% {
+    padding-left: 0;
+  }
+  100% {
+    padding-left: 15px;
+  }
+}
+main .content-wrapper {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+main .content-wrapper p {
+  font-family: Georgia,Cambria,serif;
 }
 
-main {
+.text-justify {
+  text-align: justify;
+}
+
+ul.index {
+  list-style-type: none;
+  padding-left: 10px;
+}
+ul.index a,
+ul.index a:hover {
+  line-height: 1.5rem;
+  text-decoration: none;
+}
+ul.index a {
+  color: #555;
+}
+ul.index a:hover {
+  color: #333;
+}
+ul.index i {
+  font-size: 1rem;
+}
+
+ol.number-list li {
+  padding-bottom: 15px;
+}
+
+@media (min-width: 480px) {
+  pre,
+  .ml-xs-1 {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+code.inline {
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-radius: 4px;
+  font-family: monospace,monospace;
+  padding: 2px 4px;
+}
+
+.root {
+  padding: 0px;
+  margin: 0px;
+  size: 16px;
+  line-height: 16px;
+  display: inline-flex;
+}
+.root .lines {
+  float: left;
+  display: inline-block;
+}
+.root .first-level {
+  float: left;
+  clear: left;
+}
+.root .index-container {
+  float: left;
+  display: inline-block;
+}
+.root .index-container .index {
+  min-width: 10px;
+  text-align: right;
+  color: #0AA;
+  margin-right: 5px;
+  display: block;
+  float: left;
+  clear: left;
+}
+.root .index-container .index.supposed {
+  margin-top: 24px;
+}
+.root .index-container .index.supposed-end {
+  margin-top: 24px;
+}
+.root .index-container.index-container-2 .index {
+  min-width: 15px;
+}
+.root .premise,
+.root .supposed,
+.root .assertion,
+.root .iteration-close {
+  margin-top: 8px;
+}
+.root .premise > *,
+.root .supposed > *,
+.root .assertion > *,
+.root .iteration-close > * {
+  float: left;
+}
+.root .state-error,
+.root .state-not-ok,
+.root .state-error-left {
+  float: left;
+  width: 13px;
+  height: 13px;
+  display: block;
+  margin-top: 1px;
+  margin-left: 5px;
+}
+.root .state-error-left {
+  margin-top: 15px;
+  margin-left: 0px;
+  clear: left;
+}
+.root .assertion {
+  float: left;
+  clear: left;
+}
+.root .premise, .root .supposed {
+  float: left;
+  clear: left;
+}
+.root .element {
+  color: #606;
+}
+.root .negation {
+  display: inline;
+  color: #066;
+}
+.root .negation .negation-content {
+  margin-right: 2px;
+}
+.root .premise-text {
+  margin-left: 5px;
+  color: #066;
+}
+.root .supposed-text {
+  margin-left: 5px;
+  color: #066;
+}
+.root .iteration {
+  box-sizing: border-box;
+  border: 1px solid #0BB;
+  padding-left: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-top: 5px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  float: left;
+  clear: left;
+}
+.root .errors {
+  margin-right: 10px;
+  margin-top: 10px;
+  float: left;
+  clear: left;
+}
+.root .error {
+  width: 100%;
+  color: #F00;
+  background: rgba(255, 123, 123, 0.3);
+}
+.root .error .error-text {
+  margin: 0;
+}
+.root .rule {
+  display: inline;
+  margin-left: 5px;
+}
+.root .iteration-close {
+  clear: left;
+  display: inline-block;
+  float: left;
+}
+.root .binary {
+  display: inline;
+}
+.root .close-exp {
+  display: inline;
+}
+.root .connector {
+  margin: auto 5px;
+  color: #066;
+}
+.root .rule-type {
+  color: #066;
+}
+.root .rule-connector {
+  color: #080;
+}
+.root .parenthesis {
+  color: #066;
+}
+.root .parenthesis.start {
+  margin-right: 2px;
+}
+.root .parenthesis.end {
+  margin-left: 2px;
+}
+
+.examples {
+  border-top: 1px solid #DDF;
   float: left;
   width: 100%;
-  height: 100vh;
-  position: absolute;
-  box-sizing: border-box;
-  padding-top: 114px;
-  padding-bottom: 4px;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-bottom: 30px;
+}
+
+.examples-container {
+  font-family: monospace;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #DDF;
+}
+.examples-container pre {
+  margin-top: 30px;
+}
+.examples-container .root {
+  margin-top: 20px;
+  margin-left: 15px;
+}
+
+@media (min-width: 768px) {
+  .examples-container {
+    float: left;
+    width: 100%;
+  }
+  .examples-container pre {
+    clear: left;
+    width: 40%;
+    float: left;
+  }
+  .examples-container .root {
+    margin-left: 15px;
+    width: 50%;
+    float: left;
+  }
 }

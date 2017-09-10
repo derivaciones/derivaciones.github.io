@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+        <meta charset="utf-8"/>
+        <link rel="icon" type="image/png" href="favicon.png"/>
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Architects+Daughter'>
+        <link rel="stylesheet" type="text/css" href="style/github/stylesheets/stylesheet.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="style/github/stylesheets/github-light.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="style/github/stylesheets/print.css" media="print">
+        <link rel="stylesheet" type="text/css" href="style/general.css">
+        <link rel="stylesheet" type="text/css" href="bower_components/components-font-awesome/css/font-awesome.css" >
+        <!--[if lt IE 9]>
+          <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    <script src="script/component/elementos.js"  type="text/javascript"></script>
+    <script src="script/component/message.js"    type="text/javascript"></script>
+    <script src="script/component/validator.js"  type="text/javascript"></script>
+    <script src="script/component/viewer.js"     type="text/javascript"></script>
+    <script src="script/page/index.js"           type="text/javascript"></script>
+    <link   href="style/general.css"             type="text/css" rel="stylesheet">
+    <link   href="style/page/index.css"          type="text/css" rel="stylesheet">
+    <title>Derivaciones::Home</title>
+  </head>
+  <body>
+    <header>
+      <div class="">
+        <div class="inner">
+          <a href="index.html"><h1>Derivaciones.GitHub.io</h1></a>
+          <a href="https://github.com/derivaciones" class="button">
+            <small class="follow">Follow me on</small>
+            <span class="github">GitHub</span><span class="fa fa-arrow-right"></span>
+          </a>
+        </div>
+      </div>
+
+    </header>
+    <main>
+      <div class="input-container">
+        <textarea id="input"
+          onkeydown="inputChange()"
+          onfocus="inputMode()"
+          onclick="inputMode()"
+          spellcheck="false"
+        ></textarea>
+        <div class="menu-container">
+          <div class="menu">
+            <button type="button" id="process" class="menu-button-icon" title="process">
+              <span class="fa fa-check"></span>
+            </button>
+            <button type="button" class="menu-button fa fa-" title="ctrl+f" onclick="writeInput('Λ')">
+              <span>&and;</span>
+            </button>
+            <button type="button" class="menu-button fa fa-" title="ctrl+d" onclick="writeInput('V')">
+              <span>&or;</span>
+            </button>
+            <button type="button" class="menu-button-icon" title="ctrl+e" onclick="writeInput('→')">
+              <span class="fa fa-arrow-right"></span>
+            </button>
+            <button type="button" class="menu-button fa fa-" title="ctrl+r" onclick="writeInput('⊥')">
+              <span>&perp;</span>
+            </button>
+            <button type="button" class="menu-button-text" title="&lt;&lt;" onclick="writeInput('<<')">
+              <span>&lt;&lt;</span>
+            </button>
+            <button type="button" class="menu-button-text" title="p" onclick="writeInput('p')">
+              <span>p</span>
+            </button>
+            <button type="button" class="menu-button-text" title="q" onclick="writeInput('q')">
+              <span>q</span>
+            </button>
+            <button type="button" id="more" class="menu-button-icon" title="process" onclick="more()">
+              <span class="fa fa-plus"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="output-container">
+        <div id="output" onclick="outputMode()"></div>
+      </div>
+
+    </main>
+  </body>
+</html>

@@ -1,134 +1,133 @@
-body {
-  margin: 0px;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-
-header {
-  float: left;
-  width: 100%;
-  height: 110px;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
-main {
-  float: left;
-  width: 100%;
-  height: 100vh;
-  position: absolute;
-  box-sizing: border-box;
-  padding-top: 114px;
-  padding-bottom: 4px;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-@media only screen and (min-width: 640px) and (max-height: 500px) {
-  body {
-    height: auto;
-    overflow: auto;
+@keyframes move {
+  0% {
+    padding-left: 0;
   }
-
-  header {
-    position: relative;
+  100% {
+    padding-left: 15px;
   }
-
+}
+@media (min-height: 500px) and (min-width: 768px) {
   main {
-    height: auto;
-    overflow: auto;
-    position: relative;
-    box-sizing: border-box;
-    padding-top: 4px;
+    height: 100vh;
+    padding-bottom: 28px;
   }
 }
-@media only screen and (max-width: 639px) {
-  body {
-    height: auto;
-    overflow: auto;
-  }
-
-  header {
-    position: relative;
-  }
-
+@media (min-height: 500px) and (min-width: 992px) {
   main {
-    height: auto;
-    overflow: auto;
-    position: relative;
-    box-sizing: border-box;
-    padding-top: 4px;
+    padding-bottom: 33px;
   }
 }
 .input-container {
-  padding-right: 60px;
+  box-sizing: border-box;
 }
 
-@media only screen and (min-width: 640px) and (max-width: 960px) {
-  .output-mode .input-container {
-    padding-right: 4px;
-  }
+textarea {
+  font-family: monospace;
+  box-sizing: border-box;
+  padding: 0;
 }
-.menu-container {
-  position: absolute;
-  top: 0;
-  right: 4px;
+
+body main .menu-container {
+  width: 100%;
 }
-.menu-container .menu {
-  position: absolute;
-  top: 0;
-  right: 0;
+body main .menu-container .menu {
+  top: 1px;
+  left: 1px;
 }
-.menu-container .menu .menu-button-text,
-.menu-container .menu .menu-button-icon,
-.menu-container .menu .menu-button {
+body main .menu-container .menu .menu-button-text,
+body main .menu-container .menu .menu-button-icon,
+body main .menu-container .menu .menu-button {
   border: none;
-  color: #00897B;
+  color: #2196f3;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
   transition: all 0.5s;
   position: relative;
-  width: 50px;
-  border: 2px solid #00897B;
+  width: 30px;
+  height: 20px;
+  border: 1px solid #3f51b5;
   background-color: transparent;
-  margin-bottom: 4px;
-  float: right;
-  clear: right;
+  margin: 2px;
+  float: left;
 }
-.menu-container .menu .menu-button-icon {
+body main .menu-container .menu .menu-button-icon > *,
+body main .menu-container .menu .menu-button > * {
+  vertical-align: middle;
+}
+body main .menu-container .menu .menu-button-icon {
   font-size: 12px;
-  padding: 6px 5px 2px 5px;
 }
-.menu-container .menu .menu-button-icon .fa {
-  position: relative;
-  top: -2px;
-}
-.menu-container .menu .menu-button-text {
+body main .menu-container .menu .menu-button-text {
   font-weight: bold;
   font-size: 12px;
   line-height: 12px;
-  padding: 6px 5px 8px 5px;
 }
-.menu-container .menu .menu-button {
+body main .menu-container .menu .menu-button {
   font-weight: bold;
   font-size: 16px;
-  padding: 7px 5px;
 }
 
-@media only screen and (min-width: 640px) and (max-width: 960px) {
-  .output-mode .menu-container {
-    right: 0;
+body.full .menu-container {
+  top: 50px;
+}
+
+@media (min-width: 768px) {
+  body main .menu-container {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    z-index: 1;
   }
-  .output-mode .menu-container .menu .menu-button-text,
-  .output-mode .menu-container .menu .menu-button-icon,
-  .output-mode .menu-container .menu .menu-button {
-    width: 0px;
-    padding-left: 0;
-    padding-right: 0;
-    border: none;
+  body main .menu-container .menu {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+  }
+}
+@media (min-width: 992px) {
+  body main .menu-container {
+    width: 100%;
+  }
+  body main .menu-container .menu {
+    top: 2px;
+    left: 2px;
+  }
+  body main .menu-container .menu .menu-button-text,
+  body main .menu-container .menu .menu-button-icon,
+  body main .menu-container .menu .menu-button {
+    color: #00897B;
+    width: 40px;
+    height: 25px;
+    border: 1px solid #00897B;
+    margin: 2px;
+  }
+  body main .menu-container .menu .menu-button-icon {
+    font-size: 12px;
+  }
+  body main .menu-container .menu .menu-button-icon .fa {
+    top: -2px;
+  }
+  body main .menu-container .menu .menu-button-text {
+    font-weight: bold;
+    font-size: 12px;
+  }
+  body main .menu-container .menu .menu-button {
+    font-weight: bold;
+    font-size: 16px;
+  }
+}
+@media (min-height: 500px) and (min-width: 768px) {
+  body.full main .menu-container,
+  body main .menu-container {
+    top: auto;
+    bottom: 0;
+  }
+  body.full main .menu-container .menu,
+  body main .menu-container .menu {
+    top: auto;
+    bottom: 2px;
   }
 }
 .output-container #output {
@@ -139,6 +138,16 @@ main {
   padding: 5px;
   box-sizing: border-box;
   padding-right: 0px;
+  height: 100%;
+}
+.output-container #output .placehoder {
+  line-height: 2rem;
+  color: #AAF;
+}
+.output-container #output .placehoder .procesar {
+  padding: 4px 4px 2px 4px;
+  background-color: #AAF;
+  color: #33F;
 }
 
 .root {
@@ -299,85 +308,84 @@ main {
   transition: all 0.5s;
   box-sizing: border-box;
   height: 100%;
+  width: 100%;
   overflow: hidden;
 }
 
 .input-container {
-  width: 60%;
+  padding-top: 2px;
+}
+.input-container #input {
+  transition: all 0.5s;
+  min-height: 300px;
+  height: auto;
+  width: 100%;
+  display: block;
 }
 
 .output-container {
-  width: 40%;
+  padding-top: 2px;
 }
-
-.output-mode .input-container {
-  width: 40%;
-}
-.output-mode .output-container {
-  width: 60%;
-}
-
-#input,
-#output {
-  width: 100%;
-  height: 100%;
-  margin: 0px;
-  box-sizing: border-box;
-}
-
 .output-container #output {
-  overflow-y: auto;
+  min-height: 100px;
 }
 
-.input-container #input {
-  white-space: nowrap;
+.output-mode #input {
+  min-height: 20px;
 }
 
-@media only screen and (min-width: 640px) and (max-height: 500px) {
-  .input-container {
-    height: 500px;
+@media (min-width: 768px) {
+  main .input-container,
+  main .output-container {
+    padding-top: 28px;
   }
-
-  .output-container {
-    height: 500px;
+  main .input-container {
+    width: 60%;
+    padding-right: 2px;
   }
-}
-@media only screen and (min-width: 640px) and (max-width: 960px) {
-  .input-container {
-    width: 90%;
-  }
-
-  .output-container {
-    width: 10%;
-  }
-
-  .output-mode .input-container {
-    width: 10%;
-  }
-  .output-mode .output-container {
-    width: 90%;
-  }
-  .output-mode #input {
-    overflow: hidden;
-  }
-}
-@media only screen and (max-width: 639px) {
-  .input-container {
-    height: auto;
-    width: 100%;
-    clear: both;
-  }
-  .input-container #input {
-    height: auto;
-    min-height: 320px;
-  }
-
-  .output-container {
-    width: 100%;
-    height: auto;
-    padding-left: 0;
-  }
-  .output-container #output {
+  main .input-container #input {
     min-height: 300px;
+  }
+  main .output-container {
+    width: 40%;
+  }
+  main .output-container #output {
+    min-height: 300px;
+  }
+
+  body.output-mode main .input-container {
+    width: 40%;
+  }
+  body.output-mode main .output-container {
+    width: 60%;
+  }
+}
+@media (min-width: 992px) {
+  main .input-container {
+    width: 70%;
+  }
+  main .output-container {
+    width: 30%;
+  }
+  main .input-container,
+  main .output-container {
+    padding-top: 33px;
+  }
+
+  body.output-mode main .input-container {
+    width: 30%;
+  }
+  body.output-mode main .output-container {
+    width: 70%;
+  }
+}
+@media (min-height: 500px) and (min-width: 768px) {
+  main .input-container,
+  main .output-container {
+    padding-top: 2px;
+  }
+  main .input-container #input {
+    min-height: auto;
+    height: 100%;
   }
 }

@@ -14,8 +14,8 @@ writeInput = function() {};
 
 inputMode = function() {};
 
-window.onload = function() {
-  var MODE, actions, ast, firstTime, handleKey, input, mousedownHandler, output, previousActiveElement, processHandler, storageKey, swapMode, visitKey;
+window.addLoadListener(function() {
+  var MODE, actions, ast, firstTime, fullKey, fullView, handleKey, input, listener, mousedownHandler, output, previousActiveElement, processHandler, storageKey, swapMode, visitKey;
   input = document.querySelector('#input');
   process = document.querySelector('#process');
   output = document.querySelector('#output');
@@ -51,6 +51,9 @@ window.onload = function() {
   firstTime = function() {
     return window.location = 'first.html';
   };
+  fullView = function() {
+    return document.body.classList.add('full');
+  };
   if (typeof window.localStorage !== 'undefined') {
     storageKey = 'derivation.code';
     save = function(code) {
@@ -66,6 +69,17 @@ window.onload = function() {
     if (!localStorage.getItem(visitKey)) {
       localStorage.setItem(visitKey, true);
       firstTime();
+    }
+    fullKey = 'derivation.full';
+    if (!localStorage.getItem(fullKey)) {
+      listener = function() {
+        document.removeEventListener("click", listener);
+        localStorage.setItem(fullKey, true);
+        return fullView();
+      };
+      document.addEventListener("click", listener);
+    } else {
+      fullView();
     }
   } else {
     firstTime();
@@ -112,6 +126,9 @@ window.onload = function() {
     }, {
       keyCode: 70,
       char: 'Λ'
+    }, {
+      keyCode: 71,
+      char: '¬'
     }
   ];
   handleKey = function(evnt) {
@@ -131,4 +148,4 @@ window.onload = function() {
     }
   };
   return input.addEventListener('keydown', handleKey, false);
-};
+});

@@ -6,92 +6,519 @@
         <meta http-equiv="X-UA-Compatible" content="chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Architects+Daughter'>
+        <!--
         <link rel="stylesheet" type="text/css" href="style/github/stylesheets/stylesheet.css" media="screen">
         <link rel="stylesheet" type="text/css" href="style/github/stylesheets/github-light.css" media="screen">
         <link rel="stylesheet" type="text/css" href="style/github/stylesheets/print.css" media="print">
+        -->
+
         <link rel="stylesheet" type="text/css" href="style/general.css">
         <link rel="stylesheet" type="text/css" href="bower_components/components-font-awesome/css/font-awesome.css" >
         <!--[if lt IE 9]>
           <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-    <link  href="style/page/help.css" type="text/css" rel="stylesheet">
-    <title>Derivaciones::Help</title>
+        <script src="script/main.js"    type="text/javascript"></script>
+        <script src="script/sidebar.js" type="text/javascript"></script>
+
+    <script src="script/component/elementos.js"  type="text/javascript"></script>
+    <script src="script/component/message.js"    type="text/javascript"></script>
+    <script src="script/component/validator.js"  type="text/javascript"></script>
+    <script src="script/component/viewer.js"     type="text/javascript"></script>
+    <script src="script/page/help.js"            type="text/javascript"></script>
+    <link   href="style/general.css"             type="text/css" rel="stylesheet">
+    <link   href="style/page/help.css"           type="text/css" rel="stylesheet">
+    <title>Derivaciones::Ayuda</title>
   </head>
-  <body>
+  <body class="help-page">
     <header>
-      <div class="">
-        <div class="inner">
-          <a href="index.html"><h1>Derivaciones.GitHub.io</h1></a>
-          <a href="https://github.com/derivaciones" class="button">
-            <small class="follow">Follow me on</small>
-            <span class="github">GitHub</span><span class="fa fa-arrow-right"></span>
-          </a>
+      <div class="header-inner">
+        <a href="index.html" class="index-link">
+          <h1>Derivaciones.GitHub.io</h1>
+        </a>
+        <a href="https://github.com/derivaciones" target="_blank" class="github-link">
+          <div class="github-left">
+            <img src="asset/github-icon.png" class="github-logo">
+          </div>
+          <div class="github-right">
+            <span class="follow-me">Follow me on</span>
+            <span class="github">GitHub</span>
+            <span class="github-arrow">
+              <i class="fa fa-arrow-right"></i>
+            </span>
+          </div>
+        </a>
+      </div>
+      <a class="no-href toggle-menu" onclick="toggleSidebar()">
+        <i class="fa fa-bars"></i>
+      </a>
+
+    </header>
+    <div class="sidebar">
+      <ul>
+        <li>
+          <a class="index-link" href="index.html">aplicación</a>
+        </li>
+        <li>
+          <a class="help-link" href="help.html">ayuda</a>
+        </li>
+        <li>
+          <a class="examples-link" href="validate.html">ejemplos</a>
+        </li>
+      </ul>
+    </div>
+
+    <main>
+      <div class="content-wrapper">
+        <div class="inner clearfix">
+          <section class="main-content">
+            <h4>Contenidos</h4>
+            <ul class="index">
+              <li>
+                <a href="#que-es-el-validador">
+                  <span>¿Qué es el validador de derivaciones?</span>
+                  <i aria-hidden="true" class="fa fa-angle-double-right"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#por-que-es-necesaria-la-herramienta">
+                  <span>¿Por qué es necesaria la herramienta?</span>
+                  <i aria-hidden="true" class="fa fa-angle-double-right"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#como-funciona-el-validador">
+                  <span>¿Cómo funciona el validador?</span>
+                  <i aria-hidden="true" class="fa fa-angle-double-right"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#ejemplos-de-derivaciones">
+                  <span>Algunos ejemplos de derivaciones en la interfaz</span>
+                  <i aria-hidden="true" class="fa fa-angle-double-right"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#proyectos-a-futuro">
+                  <span>Proyectos a futuro</span>
+                  <i aria-hidden="true" class="fa fa-angle-double-right"></i>
+                </a>
+              </li>
+            </ul>
+
+
+            <h4 id="que-es-el-validador">
+              <i class="fa fa-caret-right"></i>
+              <span>¿Qué es el validador de derivaciones?</span>
+            </h4>
+            <p class="ml-xs-1 text-justify text-inden-1">
+              Es una programa dotado de interfaz web para mejorar la comprensión y la
+              pragmática de los sistemas de deducción natural.
+              La herramienta permite realizar validación de derivaciones para la
+              lógica proposicional.
+              El programa validador es un entorno de práctica de
+              ejercicios de deducción natural (DN).
+              Cuando se introducen líneas aplicando incorrectamente una regla el
+              programa indica el error y las condiciones correctas para la aplicación
+              de la regla en cuestión haciendo transparente la operatoria al
+              estudiante.
+              Concluido el proceso de validación el programa imprime los resultados
+              de acuerdo a la notación estilo Fitch en un formato portable.
+              El validador de derivaciones, según mostraremos, constituye una
+              innovación tecnológica imprescindible para acompañar la didáctica de la
+              lógica en DN.
+            </p>
+            <h4 id="por-que-es-necesaria-la-herramienta">
+              <i class="fa fa-caret-right"></i>
+              <span>¿Por qué es necesaria la herramienta?</span>
+            </h4>
+            <p class="ml-xs-1 text-justify text-inden-1">
+              La argumentación tiene un lugar central en las sociedades democráticas
+              donde convivimos y atraviesa el conjunto de las disciplinas académicas.
+              Es un mandato social formar ciudadanos que puedan pensar por sí mismos
+              y decidir sobre bases racionales fundadas en la evidencia disponible
+              para contribuir de manera perdurable en los debates vigentes en los
+              distintos espacios de la escena pública.
+            </p>
+            <p class="ml-xs-1 text-justify text-inden-1">
+              De acuerdo a estas necesidades, es importante repetirlo, la lógica es
+              una disciplina indispensable para la práctica del arte de razonar con
+              corrección. La lógica sirve para desarrollar las habilidades
+              argumentativas, nos ayuda en la expresión clara de ideas y aumenta la
+              capacidad de elaborar rigurosamente argumentos a partir de distintos
+              desarrollos teóricos que sirven a los fines analíticos y críticos.
+            </p>
+            <p class="ml-xs-1 text-justify text-inden-1">
+              Una interesante herramienta para la evaluación argumentativa son los
+              sistemas de deducción natural (natürliches Schließen) desarrollados
+              independientemente por Gehard Gentzen y Stanisław Jaśkowski en los años
+              1929-1934. Los sistemas de deducción natural contrastan con los
+              sistemas axiomáticos del estilo Hilbert donde se determinan los
+              principios lógicos como axiomas de la deducción racional. Del interés
+              sobre estos desarrollos surgieron con el tiempo distintas notaciones
+              alternativas diagramáticas y linguísticas (Fitch, Suppes, etc. ) a las
+              originales de los autores. Las mismas constituyen una contrapropuesta a
+              los procedimientos celebres utilizados por Russell y Whitehead en
+              Principia Mathematica e, incluso, por el propio Frege, para lograr la
+              construcción de nuevos sistemas bajo el imperativo de ofrecer un
+              tratamiento más natural de la lógica y las matemáticas, favoreciendo
+              diferentes aplicaciones en la comprobación de la consistencia de la
+              teoría de números, la reflexión y el conocimiento sobre la teoría de la
+              demostración e incluso elucidaciones alternativas interesantes del
+              concepto de consecuencia lógica en base a una amplia gama de sistemas
+              lógicos. Todas ellas con grandes implicaciones teóricas y filosóficas
+              que tienen un lugar central en los debates actuales de la materia.
+            </p>
+            <p class="ml-xs-1 text-justify text-inden-1">
+              En el marco de la enseñanza de la lógica, en distintas universidades en
+              el país, con el objetivo de mejorar las capacidades argumentativas se
+              suelen introducir estos sistemas de deducción natural mencionados. Los
+              sistemas de deducción natural se articulan en conjuntos de pares de
+              reglas de introducción y eliminación de las conectivas lógicas. Las
+              reglas de introducción de una conectiva nos permiten derivar nuevos
+              argumentos que tienen determinada conectiva como dominante. Por
+              ejemplo, sobre  el caso que “llueve” y el caso que “hace frío”, de ello
+              podemos derivar la proposición molecular “llueve y hace frío” que se
+              justifica a partir de la regla de introducción de la conjunción. Las
+              reglas de eliminación, por su parte,  nos permiten la construcción de
+              nuevos argumentos sobre la eliminación de la conectiva dominante. Por
+              ejemplo, si es el caso que “llueve y hace frío” entonces de ello podría
+              seguirse, por aplicación de la regla de eliminación de la conjunción,
+              que “llueve” o que “hace frío”, alternativamente. Algunas de las reglas
+              del sistema de deducción natural tienen suspuestos o permiten partir de
+              ciertos supuestos. Si es el objetivo probar que “no llueve” debería
+              comenzar por suponer que “llueve” y derivar de ello una contradicción
+              que me permita introducir la negación sobre la proposición supuesta
+              originalmente. Así procede la regla de introducción de la negación.
+              Sobre la base de esta operatoria Gentzen afirma que las reglas de
+              introducción tienen una cierta primacía sobre sus contrapartes, una
+              suerte de función definitoria de la conectiva en cuestión, en la medida
+              que la determinan como tal, mientras que las reglas de eliminación
+              simplemente calculan las consecuencias resultantes de quitarlas
+              solamente pero dependen para ello del establecimiento primero de la
+              conectiva original. Entonces sobre la base de la aplicación de reglas
+              deductivas, donde algunas de ellas incluyen supuestos, se derivan
+              necesariamente distintos argumentos a los fines de probar la  validez
+              de los argumentos, la equivalencia de fórmulas o la inconsistencia de
+              conjuntos de proposiciones. Estos análisis asumen un formato particular
+              dentro de los sistemas. Un argumento será válido si y sólo si de las
+              premisas del mismo se sigue la conclusión en un número finito de pasos
+              por aplicación correcta de las reglas del sistema. Un determinado par
+              de fórmulas serán equivalentes si se pueden derivar las mismas
+              mutuamente, tomado la primera como premisa y la segunda como conclusión
+              y a la inversa tomando la segunda como premisa y la primera como
+              conclusión. Mientras que , un conjunto de proposiciones será
+              inconsistente si y sólo si se deriva una contradicción en un número
+              finito de pasos por aplicación correcta de las reglas del sistema.
+              Habitualmente estos sistemas se presentan con la notación alternativa
+              Fitch, difundida en la introducción a la lógica firmada bajo el
+              seudónimo Gamut. Es claro que el procedimiento permite la atomización
+              de los argumentos permitiendo un mayor control sobre cada contenido y
+              haciendo evidente los procesos justificatorios sobre la base de la
+              interdependencia entre los argumentos resultantes y las reglas que los
+              justifican. Los sistemas de deducción natural permiten entonces un
+              amplio reconocimiento sobre el proceso de justificación de nuestras
+              creencias apoyados sobre procedimientos y mecanismos lógicos.
+            </p>
+            <p class="ml-xs-1 text-justify text-inden-1">
+              Al conjunto de los contenidos en torno a tan interesantes desarrollos
+              para la lógica proposicional y la lógica de predicados se dedican
+              habitualmente seis clases entre teóricos y prácticos en UNLP. La
+              dedicación sobre estos temas se ve limitada por otras presentaciones
+              importantes dentro de los cursos introductorios a la disciplina. Es
+              común ver, por otra parte, que muchos alumnos no logran alcanzar los
+              conocimientos necesarios para hacer un buen uso del sistema, no
+              pudiendo desarrollar la destreza y el conjunto de las habilidades
+              necesarias para resolver los problemas básicos de las guías de trabajo
+              y los posteriores exámenes parciales. Estas dificultades, a su vez,
+              impiden que los estudiantes puedan comprender la importancia de los
+              sistemas de deducción natural para dar cuenta de la argumentación
+              humana, quedándose meramente en los pormenores de la operatoria de
+              los sistemas.
+            </p>
+            <p class="ml-xs-1 text-justify text-inden-1">
+              A los fines de sobrellevar estas dificultades presentaremos en este
+              artículo una herramienta de validación de derivaciones. El validador es
+              un entorno donde se pueden practicar los ejercicios de deducción
+              natural. Cuando se introducen líneas aplicando incorrectamente una
+              regla de introducción o eliminación el programa indica el error y las
+              condiciones correctas requeridas para la aplicación de la regla en
+              cuestión. Concluido el proceso de validación el programa imprime los
+              resultados de acuerdo a la notación estilo Fitch. El validador de
+              derivaciones, según mostraremos, constituye una innovación tecnológica
+              ,que funciona en línea y permite la práctica simultánea, el aprendizaje
+              completo de las reglas, el reconocimiento preciso de su aplicación y la
+              posterior graficación de la deducción completa resultante en un formato
+              portable.
+            </p>
+            <p class="ml-xs-1 text-justify text-inden-1">
+              El validador de derivaciones que presentamos fue desarrollado en el
+              marco del dictado del curso “introducción a la programación y lógica”,
+              perteneciente al Departamento de Ciencia y Tecnología de la Universidad
+              Nacional de Quilmes durante el primer cuatrimestre de 2016. El
+              desarrollo del mismo puede ser calificado como  “work in progress” con
+              una versión estable para la lógica proposicional en soporte PC.
+            </p>
+            <p class="ml-xs-1 text-justify text-inden-1">
+              En el curso se presentaba una introducción a la lógica a partir del
+              desarrollo de los sistemas de DN con una semántica basada en la teoría
+              de la demostración. En el contexto de dicho curso vimos la necesidad de
+              generar una herramienta que amplíe la práctica de los alumnos para
+              alcanzar un correcto manejo de las reglas del sistema. Un diagnóstico
+              inicial nos mostraba que las prácticas erróneas se apoyaban sobre un
+              reconocimiento inadecuado de las reglas de introducción y eliminación
+              de las conectivas. En particular, los errores más difundidos, en orden
+              de dificultad, se ofrecen con la introducción de la disyunción que se
+              la confunde con la introducción de la conjunción, con la eliminación
+              del condicional que se aplica sin tener disponible el antecedente, y
+              con las reglas con supuestos, introducción del condicional,
+              introducción de la negación y eliminación de la disyunción, con errores
+              en la estructura de las reglas y en el manejo y la cancelación de los
+              supuestos. La situación incluso se ve agravada, cuando el estudiante no
+              da con la solución del problema (especialmente en el contexto del
+              examen) y desesperado fuerza las reglas del sistema para arribar al
+              resultado requerido, rompiendo desafortunadamente con la cadena lógica.
+              Además, los desarrollos informáticos disponibles no servían a los fines
+              de salvar nuestras dificultades o porque no utilizaban las mismas
+              reglas del sistema o porque la estructura de las mismas no era
+              equivalente. Por ello se requería de un programa original que acompañe
+              el desempeño de los estudiantes.
+            </p>
+            <p class="ml-xs-1 text-justify text-inden-1">
+              Estas y muchas otras cuestiones las fuimos discutiendo con Alejandro
+              David Castro, docente de la materia y técnico en programación, quien
+              comprendió la importancia de la comprensión de los sistemas de DN para
+              dar cuenta de la argumentación humana y se encargó del desarrollo del
+              proyecto bajo mi supervisión.
+            </p>
+            <p class="ml-xs-1 text-justify text-inden-1">
+              Para el segundo cuatrimestre de 2016 ya contábamos con una versión
+              estable para la lógica proposicional en soporte PC y la misma se puso
+              a prueba en los cursos de lógica 8, 9, 10 y 11 dictados en la Facultad
+              de Psicología de UNLP ese mismo cuatrimestre con buenos resultados.
+              Como el formato Fitch está muy difundido comprendemos que la
+              herramienta puede servir en su sin cambios en un gran número de
+              instituciones universitarias y con variaciones mínimas para sobrellevar
+              regionalismos en todos los lugares donde se trabaje con los sistemas
+              de DN.
+            </p>
+
+            <h4 id="como-funciona-el-validador">
+              <i class="fa fa-caret-right"></i>
+              <span>¿Cómo funciona el validador?</span>
+            </h4>
+
+            <p class="ml-xs-1 text-justify text-inden-1">
+              En este apartado explicaremos en detalle como funciona el validador de
+              derivaciones. Es importante destacar que el uso del validador supone un
+              reconocimiento previo de los sistemas de deducción natural y sus
+              reglas. En ese sentido, el validador no reemplaza el estudio de los
+              sistemas de deducción natural ni mucho menos las clases que se imparten
+              sobre tales cuestiones, sino que complementa las anteriores prácticas,
+              proporcionando una mejor comprensión de las reglas del sistema y las
+              estrategias de resolución de los ejercicios.
+            </p>
+            <p class="ml-xs-1 text-justify text-inden-1">
+              Para acceder al validador hay que tener disponible una conexión a
+              Internet. La url es https://derivaciones.github.io . Allí tiene acceso
+              a la ayuda del programa o puede comenzar a usarlo directamente.
+            </p>
+            <p class="ml-xs-1 text-justify text-inden-1">
+              El validador de derivaciones proporciona un entorno para la práctica
+              efectiva y el reconocimiento preciso de los sistemas de deducción
+              natural, permitiendo demostrar la validez de razonamientos, la
+              equivalencia de fórmulas a partir de derivaciones mutuas y la
+              inconsistencia de conjuntos de proposiciones. A partir del validador de
+              derivaciones el estudiante puede controlar la aplicación correcta de
+              las reglas introducción y eliminación de la lógica proposicional. Si
+              hay una línea inadecuada el validador identifica el error y ofrece una
+              ayuda para orientar al estudiante en la aplicación correcta de la regla
+              en cuestión y en las estrategias de resolución de los ejercicios.
+            </p>
+            <p class="ml-xs-1 text-justify text-inden-1">
+              Para desarrollar la notación estándar para ingresar la información al
+              validador se hizo un análisis de los modos intuitivos en los que los
+              estudiantes escribían las derivaciones en el validador realizadas en el
+              primer cuatrimestre de 2016 en UNQ. Del análisis de esa información
+              operatoria se construyó el formato estándar. El formato estándar surge,
+              entonces, del relevamiento de las prácticas más consistentes que
+              llevaron adelante los estudiantes  y de la semejanza de la operatoria
+              con las prácticas en DN.
+            </p>
+            <p class="ml-xs-1 text-justify text-inden-1">
+              La interacción con el validador es sencilla. En principio para ingresar
+              una línea es necesario numerarla. Para ello se anota un numeral seguido
+              o de un punto o de dos puntos. Por ejemplo,
+              <code class="inline">1.</code> o
+              <code class="inline">1:</code>.
+              El validador controla luego que los números sean consecutivos a medida
+              que se suman nuevas líneas.
+            </p>
+            <p class="ml-xs-1 text-justify text-inden-1">
+              Cada regla se encuentra regimentada dentro del validador. Si se anota
+              de manera inadecuada al ingresarla el validador verifica que la
+              aplicación sea correcta y en caso de no serlo se ofrecen indicaciones
+              respecto al error cometido.
+            </p>
+            <p class="ml-xs-1 text-justify text-inden-1">
+              Ofreceremos ejemplos de la notación de las distintas reglas en formato
+              estándar.
+              Es importante destacar que no pueden ingresarse líneas sin
+              justificación, siendo o bien premisa, o bien supuesto o bien afectadas
+              a una regla particular.
+            </p>
+
+            <h4 id="conjuncion">
+              <i class="fa fa-caret-right"></i>
+              <span>Conjunción</span>
+            </h4>
+            <p class="ml-xs-1 text-justify text-inden-1">Caso introducción</p>
+            <pre>1. p premisa
+2. q premisa
+3. p ∧ q  I∧ (1,2)
+</pre>
+            <p class="ml-xs-1 text-justify text-inden-1">Caso eliminación</p>
+            <pre>1. p ∧ q premisa
+2. p E∧ (1)
+3. q E∧ (1)
+</pre>
+
+            <h4 id="disyuncion">
+              <i class="fa fa-caret-right"></i>
+              <span>Disyunción</span>
+            </h4>
+            <p class="ml-xs-1 text-justify text-inden-1">Caso introducción</p>
+            <pre>1. p premisa
+2. p v q Iv(1)
+3. r v (p v q) Iv(2)
+</pre>
+            <p class="ml-xs-1 text-justify text-inden-1">Caso eliminación</p>
+            <pre>1. p ∨ q premisa        
+2. p → (q v r) premisa 
+3. q → (q v r) premisa  
+4. q v r Ev(1, 2, 3) 
+</pre>
+
+            <h4 id="condicional">
+              <i class="fa fa-caret-right"></i>
+              <span>Condicional</span>
+            </h4>
+            <p class="ml-xs-1 text-justify text-inden-1">Caso introducción</p>
+            <pre>1. p → q premisa        
+2. p supuesto         
+3. q E →(1,2)      
+4. q v r Iv(3)       
+  <<                    
+5. p → (q v r) I→(2-4) 
+</pre>
+            <p class="ml-xs-1 text-justify text-inden-1">Caso eliminación</p>
+            <pre>1. p → q premisa        
+2. p supuesto         
+3. q E →(1,2)
+</pre>
+
+            <h4 id="negacion">
+              <i class="fa fa-caret-right"></i>
+              <span>Negación</span>
+            </h4>
+            <p class="ml-xs-1 text-justify text-inden-1">Caso introducción</p>
+            <pre>1. p→¬q premisa
+2. q premisa
+3. p supuesto
+4. ¬q  E→(1,3)
+5. ⊥ E¬(2,4)
+  << 
+6:¬p I¬(3-5)
+</pre>
+            <p class="ml-xs-1 text-justify text-inden-1">Caso eliminación</p>
+            <pre>1. q premisa
+2. ¬q  premisa
+3. ⊥ E¬(1,2) 
+</pre>
+
+            <h4 id="doble-negacion">
+              <i class="fa fa-caret-right"></i>
+              <span>Doble negación</span>
+            </h4>
+            <pre>1. ¬¬r premisa    
+2. r ¬¬(1) 
+</pre>
+
+            <h4 id="efsq">
+              <i class="fa fa-caret-right"></i>
+              <span><i>Ex falsum sequitur quodlibet</i> (EFSQ)</span>
+            </h4>
+            <pre>1. ⊥ premisa
+2. p EFSQ (1)
+</pre>
+
+            <h4 id="repeticion">
+              <i class="fa fa-caret-right"></i>
+              <span>Repetición</span>
+            </h4>
+            <pre>1. p premisa
+2. p  R (1)
+</pre>
+            <p class="ml-xs-1 text-justify text-inden-1">
+              Considerando y alternando estos conceptos previos debería ser posible
+              graficar cualquier derivación.
+            </p>
+
+            <h4 id="ejemplos-de-derivaciones">
+              <i class="fa fa-caret-right"></i>
+              <span>Algunos ejemplos de derivaciones en la interfaz</span>
+            </h4>
+
+            <p class="ml-xs-1 text-justify text-inden-1">
+              En este apartado mostraremos como grafica el validador de derivaciones
+              diferentes argumentos.
+              Podemos observar la entrada en formato estándar y la graficación
+              resultante en formato Fitch.
+              Los ejemplos seleccionados sirven a los fines de probar el buen
+              funcionamiento del sistema como casos testigos y son la evidencia de
+              ese correcto funcionamiento.
+            </p>
+            <div id="examples" class="examples"></div>
+
+            <h4 id="proyectos-a-futuro">
+              <i class="fa fa-caret-right"></i>
+              <span>Proyectos a futuro</span>
+            </h4>
+
+            <p class="ml-xs-1 text-justify text-inden-1">
+              La importancia del validador de derivaciones está a la vista.
+              Me gustaría recordar las palabras de un alumno el año pasado.
+              Estabamos trabajando sobre los ejercicios y uno de los estudiantes
+              alcanzaba a resolver uno a uno los problemas que se iban presentando.
+              Le pregunté si había utilizado el validador para acompañar su
+              aprendizaje y respondió:
+              "Si no hubiese usado el validador no hubiese podido resolverlos".
+              Como señalaba hacia el principio de este trabajo el validador de
+              derivaciones es un "work in progress" con una versión estable para PC
+              operando online. Pero queda mucho por hacer.
+              Proyectamos las siguientes mejoras necesarias para el futuro:
+            </p>
+            <ol class="number-list">
+              <li>
+                Realizar una versión offline que se pueda descargar del sitio para mejorar las condiciones de portabilidad.
+              </li>
+              <li>
+                Realizar la ampliación a la lógica de predicados clásica introducción las reglas de introducción y eliminación de los cuantificadores y el reconocimiento de la sintaxis específica de la lógica de predicados.
+              </li>
+              <li>
+                Ampliar la graficación en diferentes estilos. Al momento están dadas las condiciones para imprimir en estilo Fitch y en ascii embellecido. Pero dado lo versátil del sistema podría imprimir en cualquier estilo lo que puede resultar de gran utilidad en diferentes espacios de trabajo.
+              </li>
+              <li>
+                Disponibilidad de espacios de trabajo simultáneos en la interfaz para poder realizar simultáneamente varias derivaciones.
+              </li>
+              <li>
+                Dada la importancia que tiene la telefonía móvil es imperativo profundizar la versión de la aplicación para celulares.
+              </li>
+            </ol>
+
+          </section>
         </div>
       </div>
 
-    </header>
-    <main>
-      <div id="content-wrapper">
-        <div class="inner clearfix">
-          <section id="main-content">
-            <h3>
-              <a id="derivaciones-help" class="anchor" href="#derivaciones-help" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
-              Comprobación de derivaciónes
-            </h3>
-            <p>
-              El validador de derivaciones permite asegurar 
-              el uso correcto de reglas de derivación.
-            <br/>
-              Para utilizarlo se deberá ingresar en el cuadro 
-              de entrada un ejemplo de derivación 
-              en texto plano. como por ejemplo
-            </p>
-            <pre> 1. q → r premisa
- 2. (t V u) → q premisa
- 3. ¬s → ¬¬q premisa
- 4. (t V ¬s) supuesto
- 5. ¬s supuesto
- 6. ¬¬q E→(3,5)
- 7. q ¬¬(6)
-<<
- 8. ¬s → q I→(5-7)
- 9. t supuesto
-10. (t V u) IV(9)
-11. q E→(2,10)
-<<
-12. t → q I→(9-11)
-13. q EV(4,8,12)
-14. r E→(1,13)
-<<
-15. (t V ¬s) → r I→(4-14)</pre>
-            <p>
-              Y hacer click en el boton <code class="bold">comprobar</code>
-            </p>
-            <img class="asssert" src="asset/help/comprobar.png" />
-            <p>
-              para ver el siguiente resultado
-            </p>
-            <img src="asset/help/parsed.png" />
-            <p>
-              Para volver al modo de edición basta con hacer
-              click en el area de entrada.
-            </p>
-            <h3>Botones de ayuda</h3>
-            <p>
-              La aplicación provee un conjunto de botones de
-              ayuda para ingresar símbolos que no se encuentran
-              en el teclado físico.
-            </p>
-            <img src="asset/help/help-buttons.png" />
-            <h3>Detección de errores</h3>
-            <p>
-              En caso de encontrar errores, la aplicación los remarcará,
-              para que el usuario pueda detectar el problema.
-            </p>
-            <img src="asset/help/error.png" />
-          </section>
-        </div>
-      </div> 
     </main>
   </body>
 </html>
