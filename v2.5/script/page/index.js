@@ -98,6 +98,7 @@ window.addLoadListener(function() {
     parser = new derivaciones.Parser;
     ast = validator.validate(input.value, parser);
     if (ast) {
+      console.log(ast);
       viewer.process(ast);
       output.appendChild(ast.root.view);
     }
@@ -114,23 +115,17 @@ window.addLoadListener(function() {
   };
   actions = [
     {
-      keyCode: 81,
-      char: 'Λ'
+      keyCode: 69,
+      char: '→'
+    }, {
+      keyCode: 82,
+      char: '⊥'
     }, {
       keyCode: 68,
       char: 'V'
     }, {
-      keyCode: 72,
-      char: '∀'
-    }, {
-      keyCode: 89,
-      char: '∃'
-    }, {
-      keyCode: 79,
-      char: '→'
-    }, {
-      keyCode: 74,
-      char: '⊥'
+      keyCode: 70,
+      char: 'Λ'
     }, {
       keyCode: 71,
       char: '¬'

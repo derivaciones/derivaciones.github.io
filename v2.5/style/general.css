@@ -34,13 +34,13 @@
   width: 100%;
   display: block;
   padding: 5px;
-  background-color: #FF0000;
+  background-color: #00bfff;
   color: #FFF;
   font-weight: 600;
   font-family: monospace;
 }
 .sidebar a .active, .sidebar a:hover {
-  background-color: #e20003;
+  background-color: #008fCD;
 }
 
 .show-sidebar .sidebar {
@@ -99,8 +99,8 @@
 .help-page .help-link,
 .index-page .index-link,
 .examples-page .examples-link {
-  background-color: #e20003;
-  color: #ffAf80;
+  background-color: #008fCD;
+  color: #00Dfff;
 }
 
 .no-href {
@@ -113,23 +113,9 @@ body {
   height: auto;
 }
 
-@font-face {
-  font-family: 'Architects Daughter';
-  src: url("../font/ArchitectsDaughter/ArchitectsDaughter.woff2");
-}
 header {
   font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
-  /*background: #2e7bcf url(../asset/header-bg.png) 0 0 repeat-x;*/
-  background: #ff0000;
-  /* Old browsers */
-  background: -moz-linear-gradient(top, #ff0000 0%, #e20003 100%);
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, #ff0000 0%, #e20003 100%);
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, #ff0000 0%, #e20003 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff0000', endColorstr='#e20003',GradientType=0 );
-  /* IE6-9 */
+  background: #2e7bcf url(../asset/header-bg.jpg) 0 0 repeat-x;
   border-bottom: solid 1px #275da1;
   height: 27px;
   width: 100%;
@@ -162,7 +148,7 @@ header .header-inner .index-link h1 {
   margin-left: 50px;
   margin-right: 100px;
   font-weight: normal;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   text-align: center;
   transition: all 0.5s;
 }

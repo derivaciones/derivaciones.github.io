@@ -1,0 +1,8 @@
+@keyframes move {
+  0% {
+    padding-left: 0;
+  }
+  100% {
+    padding-left: 15px;
+  }
+}

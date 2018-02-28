@@ -710,14 +710,6 @@ validator = {};
         continue;
       }
       if (/^(\s)*\*\*/.test(line)) {
-        ast.root.children.push({
-          type: 'COMMENT',
-          content: line
-        });
-        ast.indices.push({
-          index: ' ',
-          klass: 'premise'
-        });
         continue;
       }
       if (/^((\s)*\|)*((\s)*\-)*((\s)*\|)*(\s)*$/.test(line)) {

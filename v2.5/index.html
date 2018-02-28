@@ -5,8 +5,15 @@
         <link rel="icon" type="image/png" href="favicon.png"/>
         <meta http-equiv="X-UA-Compatible" content="chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Architects+Daughter'>
+        <!--
+        <link rel="stylesheet" type="text/css" href="style/github/stylesheets/stylesheet.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="style/github/stylesheets/github-light.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="style/github/stylesheets/print.css" media="print">
+        -->
+
         <link rel="stylesheet" type="text/css" href="style/general.css">
-        <link rel="stylesheet" type="text/css" href="style/fontawesome-all.css" >
+        <link rel="stylesheet" type="text/css" href="bower_components/components-font-awesome/css/font-awesome.css" >
         <!--[if lt IE 9]>
           <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
@@ -26,7 +33,7 @@
     <header>
       <div class="header-inner">
         <a href="index.html" class="index-link">
-          <h1>Validador de Derivaciones</h1>
+          <h1>Derivaciones.GitHub.io</h1>
         </a>
         <a href="https://github.com/derivaciones" target="_blank" class="github-link">
           <div class="github-left">
@@ -66,34 +73,21 @@
           <button type="button" id="process" class="menu-button-icon" title="process">
             <span class="fa fa-check"></span>
           </button>
-          <button type="button" class="menu-button m-char" title="ctrl+q" onclick="writeInput('Λ')">
+          <button type="button" class="menu-button fa fa-" title="ctrl+f" onclick="writeInput('Λ')">
             <span>&and;</span>
           </button>
-
-          <button type="button" class="menu-button m-char" title="ctrl+d" onclick="writeInput('V')">
+          <button type="button" class="menu-button fa fa-" title="ctrl+d" onclick="writeInput('V')">
             <span>&or;</span>
           </button>
-
-          <button type="button" class="menu-button big-char" title="ctrl+h" onclick="writeInput('∀')">
-            <span>&forall;</span>
-          </button>
-
-          <button type="button" class="menu-button big-char" title="ctrl+y" onclick="writeInput('∃')">
-            <span>&exist;</span>
-          </button>
-
-          <button type="button" class="menu-button-icon" title="ctrl+o" onclick="writeInput('→')">
+          <button type="button" class="menu-button-icon" title="ctrl+e" onclick="writeInput('→')">
             <span class="fa fa-arrow-right"></span>
           </button>
-
-          <button type="button" class="menu-button m-char" title="ctrl+j" onclick="writeInput('⊥')">
+          <button type="button" class="menu-button fa fa-" title="ctrl+r" onclick="writeInput('⊥')">
             <span>&perp;</span>
           </button>
-
-          <button type="button" class="menu-button " title="ctrl+g" onclick="writeInput('¬')">
+          <button type="button" class="menu-button fa fa-" title="ctrl+g" onclick="writeInput('¬')">
             <span>&not;</span>
           </button>
-
           <button type="button" class="menu-button-text" title="&lt;&lt;" onclick="writeInput('<<')">
             <span>&lt;&lt;</span>
           </button>
@@ -103,10 +97,9 @@
           <button type="button" class="menu-button-text" title="q" onclick="writeInput('q')">
             <span>q</span>
           </button>
-
-          <!--button type="button" id="more" class="menu-button-icon" title="process" onclick="more()">
+          <button type="button" id="more" class="menu-button-icon" title="process" onclick="more()">
             <span class="fa fa-plus"></span>
-          </button-->
+          </button>
         </div>
       </div>
 

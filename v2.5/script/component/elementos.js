@@ -72,12 +72,12 @@
   }
 */
 var derivaciones = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,14],$V1=[1,15],$V2=[1,9],$V3=[1,10],$V4=[1,11],$V5=[1,12],$V6=[1,13],$V7=[1,25],$V8=[1,24],$V9=[1,23],$Va=[1,22],$Vb=[11,14,15,20,21,22,23,24,25,28,33,34],$Vc=[7,8],$Vd=[1,50],$Ve=[11,19,23,24,25],$Vf=[11,14,15,20,21,22,23,24,25,28,33,34,36],$Vg=[28,31];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,11],$V1=[1,14],$V2=[1,12],$V3=[1,13],$V4=[14,15,20,21,22,28,33,34],$V5=[1,29],$V6=[1,28],$V7=[1,30],$V8=[1,31],$V9=[11,14,15,20,21,22,23,24,25,28,33,34],$Va=[7,8],$Vb=[1,38],$Vc=[11,19,23,24,25],$Vd=[19,26,37,38],$Ve=[28,31];
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"start":3,"NUMERIC":4,"SEPARATOR":5,"line":6,"END":7,"EOF":8,"SUPPOSED_END":9,"multi_or":10,"OR":11,"expression":12,"rule":13,"PREMISA":14,"SUPUESTO":15,"rule_action":16,"connector":17,"close_ref":18,"NOT":19,"DOUBLE_NOT":20,"EFSQ":21,"R":22,"AND":23,"THEN":24,"EQUIVALENT":25,"(":26,"references":27,")":28,"ref_array":29,"ref_range":30,",":31,"-":32,"I":33,"E":34,"elements":35,"ELEMENT":36,"CONTRADICTION":37,"APPLICATION":38,"FORALL":39,"EXIST":40,"$accept":0,"$end":1},
-terminals_: {2:"error",4:"NUMERIC",5:"SEPARATOR",7:"END",8:"EOF",9:"SUPPOSED_END",11:"OR",14:"PREMISA",15:"SUPUESTO",19:"NOT",20:"DOUBLE_NOT",21:"EFSQ",22:"R",23:"AND",24:"THEN",25:"EQUIVALENT",26:"(",28:")",31:",",32:"-",33:"I",34:"E",36:"ELEMENT",37:"CONTRADICTION",38:"APPLICATION",39:"FORALL",40:"EXIST"},
-productions_: [0,[3,5],[3,4],[3,3],[3,2],[10,2],[10,1],[6,2],[6,2],[6,2],[13,3],[13,3],[13,2],[13,2],[13,2],[17,1],[17,1],[17,1],[17,1],[18,3],[27,1],[27,1],[29,3],[29,1],[30,3],[16,1],[16,1],[35,1],[35,2],[12,1],[12,1],[12,2],[12,3],[12,3],[12,3],[12,3],[12,3],[12,3],[12,2],[12,3]],
+symbols_: {"error":2,"start":3,"NUMERIC":4,"SEPARATOR":5,"line":6,"END":7,"EOF":8,"SUPPOSED_END":9,"multi_or":10,"OR":11,"expression":12,"rule":13,"PREMISA":14,"SUPUESTO":15,"rule_action":16,"connector":17,"close_ref":18,"NOT":19,"DOUBLE_NOT":20,"EFSQ":21,"R":22,"AND":23,"THEN":24,"EQUIVALENT":25,"(":26,"references":27,")":28,"ref_array":29,"ref_range":30,",":31,"-":32,"I":33,"E":34,"composite":35,"close_exp":36,"ELEMENT":37,"CONTRADICTION":38,"$accept":0,"$end":1},
+terminals_: {2:"error",4:"NUMERIC",5:"SEPARATOR",7:"END",8:"EOF",9:"SUPPOSED_END",11:"OR",14:"PREMISA",15:"SUPUESTO",19:"NOT",20:"DOUBLE_NOT",21:"EFSQ",22:"R",23:"AND",24:"THEN",25:"EQUIVALENT",26:"(",28:")",31:",",32:"-",33:"I",34:"E",37:"ELEMENT",38:"CONTRADICTION"},
+productions_: [0,[3,5],[3,4],[3,3],[3,2],[10,2],[10,1],[6,2],[6,2],[6,2],[13,3],[13,3],[13,2],[13,2],[13,2],[17,1],[17,1],[17,1],[17,1],[18,3],[27,1],[27,1],[29,3],[29,1],[30,3],[16,1],[16,1],[12,3],[12,1],[36,3],[35,1],[35,2],[35,1],[35,1]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -134,7 +134,7 @@ break;
 case 20:
 this.$ = ref_array($$[$0]);
 break;
-case 21: case 25: case 26:
+case 21: case 25: case 26: case 28: case 30:
 this.$ = $$[$0];
 break;
 case 22:
@@ -147,48 +147,24 @@ case 24:
 this.$ = ref_range($$[$0-2], $$[$0]);
 break;
 case 27:
-this.$ = mkArray(element($$[$0]));
-break;
-case 28:
-this.$ = merge($$[$0-1], element($$[$0]));
+this.$ = binari($$[$0-1], $$[$0-2], $$[$0]);
 break;
 case 29:
-this.$ = element($$[$0]);
-break;
-case 30:
-this.$ = contradiction($$[$0]);
+this.$ = close_exp($$[$0-1]);
 break;
 case 31:
-this.$ = application($$[$0-1], $$[$0]);
-break;
-case 32:
-this.$ = forall(element($$[$0-1]), $$[$0]);
-break;
-case 33:
-this.$ = exist(element($$[$0-1]), $$[$0]);
-break;
-case 34:
-this.$ = binary("BICONDITIONAL", $$[$0-1], $$[$0-2], $$[$0]);
-break;
-case 35:
-this.$ = binary("CONDITIONAL", $$[$0-1], $$[$0-2], $$[$0]);
-break;
-case 36:
-this.$ = binary("CONJUNCTION", $$[$0-1], $$[$0-2], $$[$0]);
-break;
-case 37:
-this.$ = binary("DISJUNCTION", $$[$0-1], $$[$0-2], $$[$0]);
-break;
-case 38:
 this.$ = nagation($$[$0-1], $$[$0]);
 break;
-case 39:
-this.$ = close_exp($$[$0-1]);
+case 32:
+this.$ = element($$[$0]);
+break;
+case 33:
+this.$ = contradiction($$[$0]);
 break;
 }
 },
-table: [{3:1,4:[1,2],9:[1,3]},{1:[3]},{5:[1,4]},{7:[1,5],8:[1,6]},{6:7,12:8,19:$V0,26:$V1,36:$V2,37:$V3,38:$V4,39:$V5,40:$V6},{8:[1,16]},{1:[2,4]},{7:[1,17],8:[1,18]},{11:$V7,13:19,14:[1,20],15:[1,21],16:26,20:[1,27],21:[1,28],22:[1,29],23:$V8,24:$V9,25:$Va,33:[1,30],34:[1,31]},o($Vb,[2,29]),o($Vb,[2,30]),{35:32,36:[1,33]},{36:[1,34]},{36:[1,35]},{12:36,19:$V0,26:$V1,36:$V2,37:$V3,38:$V4,39:$V5,40:$V6},{12:37,19:$V0,26:$V1,36:$V2,37:$V3,38:$V4,39:$V5,40:$V6},{1:[2,3]},{8:[1,38]},{1:[2,2]},o($Vc,[2,7]),o($Vc,[2,8]),o($Vc,[2,9]),{12:39,19:$V0,26:$V1,36:$V2,37:$V3,38:$V4,39:$V5,40:$V6},{12:40,19:$V0,26:$V1,36:$V2,37:$V3,38:$V4,39:$V5,40:$V6},{12:41,19:$V0,26:$V1,36:$V2,37:$V3,38:$V4,39:$V5,40:$V6},{12:42,19:$V0,26:$V1,36:$V2,37:$V3,38:$V4,39:$V5,40:$V6},{11:[1,46],17:43,19:[1,44],23:[1,45],24:[1,47],25:[1,48]},{18:49,26:$Vd},{18:51,26:$Vd},{18:52,26:$Vd},o($Ve,[2,25]),o($Ve,[2,26]),o($Vb,[2,31],{36:[1,53]}),o($Vf,[2,27]),{12:54,19:$V0,26:$V1,36:$V2,37:$V3,38:$V4,39:$V5,40:$V6},{12:55,19:$V0,26:$V1,36:$V2,37:$V3,38:$V4,39:$V5,40:$V6},o($Vb,[2,38]),{11:$V7,23:$V8,24:$V9,25:$Va,28:[1,56]},{1:[2,1]},o($Vb,[2,34]),o($Vb,[2,35]),o($Vb,[2,36]),o($Vb,[2,37]),{18:57,26:$Vd},{18:58,26:$Vd},{26:[2,15]},{26:[2,16]},{26:[2,17]},{26:[2,18]},o($Vc,[2,12]),{4:[1,62],27:59,29:60,30:61},o($Vc,[2,13]),o($Vc,[2,14]),o($Vf,[2,28]),o($Vb,[2,32]),o($Vb,[2,33]),o($Vb,[2,39]),o($Vc,[2,10]),o($Vc,[2,11]),{28:[1,63]},{28:[2,20],31:[1,64]},{28:[2,21]},o($Vg,[2,23],{32:[1,65]}),o($Vc,[2,19]),{4:[1,66]},{4:[1,67]},o($Vg,[2,22]),{28:[2,24]}],
-defaultActions: {6:[2,4],16:[2,3],18:[2,2],38:[2,1],45:[2,15],46:[2,16],47:[2,17],48:[2,18],61:[2,21],67:[2,24]},
+table: [{3:1,4:[1,2],9:[1,3]},{1:[3]},{5:[1,4]},{7:[1,5],8:[1,6]},{6:7,12:8,19:$V0,26:$V1,35:9,36:10,37:$V2,38:$V3},{8:[1,15]},{1:[2,4]},{7:[1,16],8:[1,17]},{13:18,14:[1,19],15:[1,20],16:21,20:[1,22],21:[1,23],22:[1,24],33:[1,25],34:[1,26]},o($V4,[2,28],{17:27,11:$V5,23:$V6,24:$V7,25:$V8}),o($V9,[2,30]),{19:$V0,26:$V1,35:32,36:10,37:$V2,38:$V3},o($V9,[2,32]),o($V9,[2,33]),{12:33,19:$V0,26:$V1,35:9,36:10,37:$V2,38:$V3},{1:[2,3]},{8:[1,34]},{1:[2,2]},o($Va,[2,7]),o($Va,[2,8]),o($Va,[2,9]),{11:$V5,17:35,19:[1,36],23:$V6,24:$V7,25:$V8},{18:37,26:$Vb},{18:39,26:$Vb},{18:40,26:$Vb},o($Vc,[2,25]),o($Vc,[2,26]),{19:$V0,26:$V1,35:41,36:10,37:$V2,38:$V3},o($Vd,[2,15]),o($Vd,[2,16]),o($Vd,[2,17]),o($Vd,[2,18]),o($V9,[2,31]),{28:[1,42]},{1:[2,1]},{18:43,26:$Vb},{18:44,26:$Vb},o($Va,[2,12]),{4:[1,48],27:45,29:46,30:47},o($Va,[2,13]),o($Va,[2,14]),o($V4,[2,27]),o($V9,[2,29]),o($Va,[2,10]),o($Va,[2,11]),{28:[1,49]},{28:[2,20],31:[1,50]},{28:[2,21]},o($Ve,[2,23],{32:[1,51]}),o($Va,[2,19]),{4:[1,52]},{4:[1,53]},o($Ve,[2,22]),{28:[2,24]}],
+defaultActions: {6:[2,4],15:[2,3],17:[2,2],34:[2,1],47:[2,21],53:[2,24]},
 parseError: function parseError(str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -348,113 +324,85 @@ parse: function parse(input) {
         a.push(b);
         return a;
     }
-
+    
     function mkArray(a) {
         if (!Array.isArray(a)) {
             a = [a];
         }
         return a;
     }
-
+    
     function line(index, expression) {
         expression.index = parseInt(index);
         return expression;
     }
-
+    
     function assertion(expression, rule) {
         return {
-          type:      'ASSERTION',
+          type:    'ASSERTION',
           expression: expression,
-          rule:       rule
+          rule:    rule
         };
     }
-
+    
     function premise(expression) {
         return {
-          type:      'PREMISE',
+          type:    'PREMISE',
           expression: expression
         };
     }
-
+    
     function supposed(expression) {
         return {
-          type:      'SUPPOSED',
+          type:    'SUPPOSED',
           expression: expression
         };
     }
-
-    function binary(itype, content, left, right) {
+    
+    function binari(connector, left, right) {
         return {
-          type:     'BINARY',
+          type:      'BINARY',
           left:      left,
           right:     right,
-          connector: {
-            type: itype,
-            content: content
-          }
+          connector: connector
         };
     }
-
+    
     function close_exp(expression) {
         return {
-          type:      'CLOSE_EXP',
+          type:       'CLOSE_EXP',
           expression: expression
         };
     }
-
     function nagation(content, expression) {
         return {
-          type:      'NEGATION',
+          type:       'NEGATION',
           content:    content,
           expression: expression
         };
     }
-
-    function exist(element, expression) {
-        return {
-          type:      'EXIST',
-          element:    element,
-          expression: expression
-        };
-    }
-
-    function forall(element, expression) {
-        return {
-          type:      'FORALL',
-          element:    element,
-          expression: expression
-        };
-    }
-
+    
     function contradiction(text) {
         return {
-          type:   'CONTRADICTION',
+          type:    'CONTRADICTION',
           content: text
         };
     }
-
+    
     function element(text) {
         return {
-          type:      'ELEMENT',
+          type:       'ELEMENT',
           identifier: text
         };
     }
-
-    function application(text, elements) {
-        return {
-          type:      'APPLICATION',
-          identifier: text,
-          elements:   elements
-        };
-    }
-
+    
     function ref_array(references) {
         parsed = []
         var index;
         for(index = 0; index < references.length; index++){
           parsed.push(parseInt(references[index]));
         }
-
+          
         return {
           type:    'ARRAY',
           indices: parsed
@@ -469,19 +417,19 @@ parse: function parse(input) {
     }
     function double_not(references) {
         return {
-          action:    'DOUBLE_NOT',
+          action:       'DOUBLE_NOT',
           references: references
         };
     }
     function efsq(references) {
         return {
-          action:    'EFSQ',
+          action:     'EFSQ',
           references: references
         };
     }
     function repeat(references) {
         return {
-          action:    'REPEAT',
+          action:     'REPEAT',
           references: references
         };
     }
@@ -492,8 +440,7 @@ parse: function parse(input) {
           references: references
         };
     }
-
-
+    
 /* generated by jison-lex 0.3.4 */
 var lexer = (function(){
 var lexer = ({
@@ -850,38 +797,32 @@ case 12:return 14
 break;
 case 13:return 15
 break;
-case 14:return 37
+case 14:return 38
 break;
-case 15:return 39
+case 15:return 26
 break;
-case 16:return 'Exist'
+case 16:return 28
 break;
-case 17:return 26
+case 17:return 31
 break;
-case 18:return 28
+case 18:return 5
 break;
-case 19:return 31
+case 19:return 7
 break;
-case 20:return 5
+case 20:return 32
 break;
-case 21:return 7
+case 21:return 4
 break;
-case 22:return 32
+case 22:return 37
 break;
-case 23:return 4
+case 23:return 8
 break;
-case 24:return 36
-break;
-case 25:return 38
-break;
-case 26:return 8
-break;
-case 27:return 'INVALID'
+case 24:return 'INVALID'
 break;
 }
 },
-rules: [/^(?:\s+)/,/^(?:(Λ|∧|&)(?=((\s)*[^\s])))/,/^(?:(V|v|∨|\|)(?=((\s)*[^\s\|\<])))/,/^(?:(→|->))/,/^(?:(↔|(<->)))/,/^(?:((\s)*(\|)*)*(<<))/,/^(?:¬¬(?=((\s)*\(\d)))/,/^(?:¬(?!(¬(\s)*\(\d)))/,/^(?:I(?=((\s)*([\→\↔Λ∧&Vv\∨\¬]|(<->)|(->))(\s)*\((\s)*[0-9])))/,/^(?:E(?=((\s)*([\→\↔Λ∧&Vv\∨\¬]|(<->)|(->))(\s)*\((\s)*[0-9])))/,/^(?:R(?=((\s)*\((\s)*[0-9])))/,/^(?:EFSQ(?=((\s)*\((\s)*[0-9])))/,/^(?:premisa\b)/,/^(?:supuesto\b)/,/^(?:⊥)/,/^(?:∀)/,/^(?:∃)/,/^(?:\()/,/^(?:\))/,/^(?:,)/,/^(?:(\.|:)(\s)*(\|)*)/,/^(?:((\|)+(\s)*)+)/,/^(?:-)/,/^(?:[0-9]+)/,/^(?:[a-uw-z]([0-9]*))/,/^(?:[A-UW-Z]([0-9]*))/,/^(?:$)/,/^(?:)/],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27],"inclusive":true}}
+rules: [/^(?:\s+)/,/^(?:(Λ|∧|&)(?=((\s)*[^\s])))/,/^(?:(V|v|∨|\|)(?=((\s)*[^\s\|\<])))/,/^(?:(→|->))/,/^(?:(↔|(<->)))/,/^(?:((\s)*(\|)*)*(<<))/,/^(?:¬¬(?=((\s)*\(\d)))/,/^(?:¬(?!(¬(\s)*\(\d)))/,/^(?:I(?=((\s)*([\→\↔Λ∧&Vv\∨\¬]|(<->)|(->))(\s)*\((\s)*[0-9])))/,/^(?:E(?=((\s)*([\→\↔Λ∧&Vv\∨\¬]|(<->)|(->))(\s)*\((\s)*[0-9])))/,/^(?:R(?=((\s)*\((\s)*[0-9])))/,/^(?:EFSQ(?=((\s)*\((\s)*[0-9])))/,/^(?:premisa\b)/,/^(?:supuesto\b)/,/^(?:⊥)/,/^(?:\()/,/^(?:\))/,/^(?:,)/,/^(?:(\.|:)(\s)*(\|)*)/,/^(?:((\|)+(\s)*)+)/,/^(?:-)/,/^(?:[0-9]+)/,/^(?:[a-zA-Z]([0-9]+)?(?![a-uw-zA-UW-Z]))/,/^(?:$)/,/^(?:)/],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24],"inclusive":true}}
 });
 return lexer;
 })();

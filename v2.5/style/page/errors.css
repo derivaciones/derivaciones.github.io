@@ -61,17 +61,7 @@ code.inline {
   margin: 0px;
   size: 16px;
   line-height: 16px;
-  padding-left: 15px;
-  position: relative;
-}
-.root .experimental {
-  color: red;
-  clear: both;
-  padding-top: 5px;
-}
-.root .experimental .experimental-icon {
-  margin-right: 5px;
-  font-size: 14px;
+  display: inline-flex;
 }
 .root .lines {
   float: left;
@@ -81,45 +71,39 @@ code.inline {
   float: left;
   clear: left;
 }
-.root .index-left {
-  position: absolute;
-  left: -5px;
+.root .index-container {
+  float: left;
+  display: inline-block;
 }
-.root.level-2 {
-  padding-left: 20px;
-}
-.root.level-2 .index-left {
-  left: -15px;
-}
-.root .index-left-level {
-  position: absolute;
-  left: -11px;
-}
-.root .index-left-text {
+.root .index-container .index {
+  min-width: 10px;
+  text-align: right;
   color: #0AA;
+  margin-right: 5px;
+  display: block;
+  float: left;
+  clear: left;
 }
-.root .comment,
+.root .index-container .index.supposed {
+  margin-top: 24px;
+}
+.root .index-container .index.supposed-end {
+  margin-top: 24px;
+}
+.root .index-container.index-container-2 .index {
+  min-width: 15px;
+}
 .root .premise,
 .root .supposed,
 .root .assertion,
 .root .iteration-close {
   margin-top: 8px;
 }
-.root .comment > *,
 .root .premise > *,
 .root .supposed > *,
 .root .assertion > *,
 .root .iteration-close > * {
   float: left;
-}
-.root .comment,
-.root .premise,
-.root .supposed,
-.root .assertion {
-  position: relative;
-}
-.root .comment {
-  color: #6495ed;
 }
 .root .state-error,
 .root .state-not-ok,
@@ -197,21 +181,8 @@ code.inline {
   display: inline-block;
   float: left;
 }
-.root .exist,
-.root .forall,
-.root .binary,
-.root .application {
+.root .binary {
   display: inline;
-}
-.root .exist .element,
-.root .exist .identifier,
-.root .forall .element,
-.root .forall .identifier {
-  margin-right: 4px;
-}
-.root .exist .identifier,
-.root .forall .identifier {
-  color: #066;
 }
 .root .close-exp {
   display: inline;
@@ -236,37 +207,37 @@ code.inline {
   margin-left: 2px;
 }
 
-.examples {
+.errors {
   border-top: 1px solid #DDF;
   float: left;
   width: 100%;
   padding-bottom: 30px;
 }
 
-.examples-container {
+.error-container {
   font-family: monospace;
   padding-bottom: 30px;
   border-bottom: 1px solid #DDF;
 }
-.examples-container pre {
+.error-container pre {
   margin-top: 30px;
 }
-.examples-container .root {
+.error-container .root {
   margin-top: 20px;
   margin-left: 15px;
 }
 
 @media (min-width: 768px) {
-  .examples-container {
+  .error-container {
     float: left;
     width: 100%;
   }
-  .examples-container pre {
+  .error-container pre {
     clear: left;
     width: 40%;
     float: left;
   }
-  .examples-container .root {
+  .error-container .root {
     margin-left: 15px;
     width: 50%;
     float: left;

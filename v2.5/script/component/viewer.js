@@ -3,7 +3,7 @@ var viewer;
 viewer = {};
 
 (function() {
-  var add_classes, contains, experimental, experimental_message, mk, mk_div, mk_expression, mk_img, mk_ndex, mk_paragraph, mk_pre, mk_ref, mk_rule, mk_single, mk_span, process_children, process_errors, process_expression;
+  var add_classes, mk, mk_div, mk_expression, mk_img, mk_index, mk_paragraph, mk_pre, mk_ref, mk_rule, mk_single, mk_span, process_children, process_errors, process_expression;
   add_classes = function(element, classes) {
     var i, klass, len;
     if (classes == null) {
@@ -65,33 +65,6 @@ viewer = {};
       root.appendChild(process_expression(expression.right));
       return root;
     },
-    APPLICATION: function(expression) {
-      var element, i, len, ref, root;
-      root = mk_div(['application']);
-      root.appendChild(mk_span(expression.identifier, ['identifier']));
-      ref = expression.elements;
-      for (i = 0, len = ref.length; i < len; i++) {
-        element = ref[i];
-        root.appendChild(mk_span(element.identifier, ['element']));
-      }
-      return root;
-    },
-    FORALL: function(expression) {
-      var root;
-      root = mk_div(['forall']);
-      root.appendChild(mk_span('∀', ['identifier']));
-      root.appendChild(mk_span(expression.element.identifier, ['element']));
-      root.appendChild(process_expression(expression.expression));
-      return root;
-    },
-    EXIST: function(expression) {
-      var root;
-      root = mk_div(['exist']);
-      root.appendChild(mk_span('∃', ['identifier']));
-      root.appendChild(mk_span(expression.element.identifier, ['element']));
-      root.appendChild(process_expression(expression.expression));
-      return root;
-    },
     ELEMENT: function(expression) {
       return mk_span(expression.identifier, ['element']);
     },
@@ -114,74 +87,37 @@ viewer = {};
       return mk_span(expression.content, ['contradiction']);
     }
   };
-  mk_ndex = function(node, level) {
-    var container, fixer, i, index, ref;
-    container = mk_div(['index-left']);
-    container.appendChild(mk_span(node.index, ['index-left-text']));
-    for (index = i = 0, ref = level; 0 <= ref ? i <= ref : i >= ref; index = 0 <= ref ? ++i : --i) {
-      fixer = mk_div(['index-left-level']);
-      fixer.appendChild(container);
-      container = fixer;
-    }
-    return node.view.appendChild(container);
-  };
-  experimental_message = 'Esta caracteristica es experimental' + ' y aún no se pueden realizar validaciones sobre la misma';
-  contains = function(item, list) {
-    return list.indexOf(item) !== -1;
-  };
-  experimental = function(node) {
-    var container, icon;
-    if (contains(node.expression.type, ['FORALL', 'EXIST', 'APPLICATION'])) {
-      container = mk_span('', ['experimental']);
-      icon = mk_span('', ['experimental-icon']);
-      icon.appendChild(mk_span('', ['fa', 'fa-exclamation-triangle']));
-      container.appendChild(icon);
-      container.appendChild(mk_span(experimental_message, []));
-      return node.view.appendChild(container);
-    }
-  };
   mk = {
-    COMMENT: function(node, error, level) {
-      node.view = mk_div(['comment']);
-      node.view.appendChild(mk_span(node.content, ['comment-text']));
-      return node;
-    },
-    CLOSE_ITERATION_ERROR: function(node, error, level) {
+    CLOSE_ITERATION_ERROR: function(node) {
       node.view = mk_div(['iteration-close']);
       node.view.appendChild(mk_span('<<', ['iteration-close-text']));
       return process_errors(node, true);
     },
-    PREMISE: function(node, error, level) {
+    PREMISE: function(node, error) {
       node.view = mk_div(['premise']);
       node.view.appendChild(process_expression(node.expression));
       node.view.appendChild(mk_span('premisa', ['premise-text']));
-      experimental(node);
-      mk_ndex(node, level);
       return process_errors(node, error);
     },
-    SUPPOSED: function(node, error, level) {
+    SUPPOSED: function(node, error) {
       node.view = mk_div(['supposed']);
       node.view.appendChild(process_expression(node.expression));
       node.view.appendChild(mk_span('supuesto', ['supposed-text']));
-      mk_ndex(node, level);
-      experimental(node);
       return process_errors(node, error);
     },
-    ASSERTION: function(node, error, level) {
+    ASSERTION: function(node, error) {
       node.view = mk_div(['assertion']);
       node.view.appendChild(process_expression(node.expression));
       mk_rule(node.rule);
       node.view.appendChild(node.rule.view);
-      mk_ndex(node, level);
-      experimental(node);
       return process_errors(node, error);
     },
-    ITERATION: function(node, error, level) {
+    ITERATION: function(node, error) {
       node.view = mk_div(['iteration']);
-      return process_children(node, error, level + 1);
+      return process_children(node, error);
     },
-    ERROR: function(node, error, level) {
-      var container, error_view, i, len, ref, results;
+    ERROR: function(node) {
+      var container, error, error_view, i, len, ref, results;
       if (node.name === 'FINALIZACION_DENTRO_DE_ITERACION') {
         node.view = mk_div(['error-wrapper']);
         node.view.appendChild(mk_img(['state-error-left'], 'asset/error.png'));
@@ -236,25 +172,39 @@ viewer = {};
   process_expression = function(expression) {
     return mk_expression[expression.type](expression);
   };
-  process_children = function(parent, error, level) {
+  process_children = function(parent, error) {
     var i, len, node, ref, results;
     ref = parent.children;
     results = [];
     for (i = 0, len = ref.length; i < len; i++) {
       node = ref[i];
-      mk[node.type](node, error, level);
+      mk[node.type](node, error);
       results.push(parent.view.appendChild(node.view));
+    }
+    return results;
+  };
+  mk_index = function(ast) {
+    var elem, i, len, ref, results, rules, width_klass;
+    width_klass = 'index-container-' + ast.length.toString().length;
+    rules = mk_div(['index-container', width_klass]);
+    ast.root.view.appendChild(rules);
+    ref = ast.indices;
+    results = [];
+    for (i = 0, len = ref.length; i < len; i++) {
+      elem = ref[i];
+      results.push(rules.appendChild(mk_span(elem.index, ['index', elem.klass])));
     }
     return results;
   };
   return viewer.process = function(ast) {
     var i, len, lines, node, ref;
     ast.root.view = mk_div(['root']);
+    mk_index(ast);
     lines = mk_div(['lines']);
     ref = ast.root.children;
     for (i = 0, len = ref.length; i < len; i++) {
       node = ref[i];
-      mk[node.type](node, ast.error, 0);
+      mk[node.type](node, ast.error);
       lines.appendChild(node.view);
       add_classes(node.view, ['first-level']);
     }
